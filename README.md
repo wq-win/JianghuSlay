@@ -6,19 +6,38 @@
 
 需要 Python 3.9+。
 
+推荐用法说明也写在博客页：[江湖 Slay 玩法说明](https://wq-win.github.io/game/jianghu-slay.html)。
+
+### 一键启动（推荐）
+
+```bash
+./scripts/start.sh        # 本机人机对战（默认）
+./scripts/start.sh host   # 本机当服务器，开房给好友
+```
+
+首次运行会自动创建 `.venv` 并安装依赖。
+
+| 模式 | 谁能访问 | 适合 |
+|------|----------|------|
+| `ai`（默认） | 仅本机 `http://127.0.0.1:8000` | 平时自己打 AI |
+| `host` | 本机 + 局域网；可再配 ngrok | 偶尔双人房间对战 |
+
+**双人流程（host）：** 房主创建房间 → 把地址和房间码发给对方 → 对方用同一地址打开并加入（不要再开自己的服务）→ 双方选英雄并准备开战。跨网时房主另开终端执行 `ngrok http 8000`，把 https 链接发给对方。
+
 ### 终端版
 
 ```bash
 python main.py
 ```
 
-### 网页版（人机 / 人人对战）
+### 网页版（手动）
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-PYTHONPATH=. uvicorn server.main:app --host 0.0.0.0 --port 8000
+PYTHONPATH=. uvicorn server.main:app --host 127.0.0.1 --port 8000   # 本机 AI
+# 开房改为 --host 0.0.0.0 --port 8000
 ```
 
 浏览器打开 <http://127.0.0.1:8000> 。
