@@ -41,6 +41,11 @@ class LobbyAction(BaseModel):
     ready: Optional[bool] = None
 
 
+@app.get("/health")
+def health() -> Dict[str, bool]:
+    return {"ok": True}
+
+
 @app.get("/api/heroes")
 def list_heroes() -> List[Dict[str, Any]]:
     return [
