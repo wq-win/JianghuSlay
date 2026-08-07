@@ -9,6 +9,8 @@ build/
 .venv/
 venv/
 env/
+web/node_modules/
+web/dist/
 
 # IDE / OS
 .idea/
