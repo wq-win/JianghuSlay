@@ -8,6 +8,14 @@
 
 推荐用法说明也写在博客页：[江湖 Slay 玩法说明](https://wq-win.github.io/game/jianghu-slay.html)。
 
+### 线上游玩（Render）
+
+公网地址（部署完成后）：**<https://jianghu-slay.onrender.com>**
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/wq-win/JianghuSlay)
+
+免费实例约 15 分钟无访问会休眠，首次打开可能需等待 30–60 秒冷启动；重启后房间会失效。
+
 ### 一键启动（推荐）
 
 ```bash
