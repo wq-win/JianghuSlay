@@ -4,7 +4,7 @@ emoji: ⚔️
 colorFrom: yellow
 colorTo: red
 sdk: docker
-app_port: 7860
+app_port: 8000
 pinned: false
 license: mit
 short_description: 文字版英雄杀，人机与房间对战
@@ -20,11 +20,13 @@ short_description: 文字版英雄杀，人机与房间对战
 
 推荐用法说明也写在博客页：[江湖 Slay 玩法说明](https://wq-win.github.io/game/jianghu-slay.html)。
 
-### 线上游玩
+### 线上游玩（Koyeb）
 
-公网地址：**<https://huggingface.co/spaces/wq-win/jianghu-slay>**
+公网地址部署后形如：`https://jianghu-slay-xxxx.koyeb.app`
 
-长时间无人访问后 Space 可能休眠，首次打开会稍慢；重启后房间码失效。
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&builder=docker&repository=github.com/wq-win/JianghuSlay&branch=main&name=jianghu-slay&instance_type=free&ports=8000;http;/&env[PORT]=8000&regions=fra)
+
+用 GitHub 登录 Koyeb，Instance 选 **Free**，点 Deploy。长时间无人访问后可能休眠，重启后房间码失效。
 
 ### 一键启动（推荐）
 
