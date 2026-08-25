@@ -5,7 +5,7 @@ USER user
 ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH \
     PYTHONPATH=/home/user/app \
-    PORT=7860
+    PORT=8000
 
 WORKDIR $HOME/app
 
@@ -15,5 +15,5 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 COPY --chown=user . .
 
-EXPOSE 7860
-CMD uvicorn server.main:app --host 0.0.0.0 --port ${PORT:-7860}
+EXPOSE 8000
+CMD uvicorn server.main:app --host 0.0.0.0 --port ${PORT:-8000} --proxy-headers --forwarded-allow-ips='*'
