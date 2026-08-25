@@ -1,0 +1,13 @@
+.venv
+venv
+env
+__pycache__
+*.pyc
+.git
+.vscode
+.idea
+.DS_Store
+web/node_modules
+web/dist
+web/src
+scripts/deploy_render.sh

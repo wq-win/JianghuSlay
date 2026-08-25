@@ -1,3 +1,15 @@
+---
+title: Jianghu Slay
+emoji: ⚔️
+colorFrom: yellow
+colorTo: red
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+short_description: 文字版英雄杀，人机与房间对战
+---
+
 # 江湖 Slay（文字版英雄杀）
 
 1v1 回合制卡牌对战。选择历史英雄，与 AI 或好友对战，通过出牌与技能击败对手。
@@ -8,13 +20,11 @@
 
 推荐用法说明也写在博客页：[江湖 Slay 玩法说明](https://wq-win.github.io/game/jianghu-slay.html)。
 
-### 线上游玩（Render）
+### 线上游玩
 
-公网地址（部署完成后）：**<https://jianghu-slay.onrender.com>**
+公网地址：**<https://huggingface.co/spaces/wq-win/jianghu-slay>**
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/wq-win/JianghuSlay)
-
-免费实例约 15 分钟无访问会休眠，首次打开可能需等待 30–60 秒冷启动；重启后房间会失效。
+长时间无人访问后 Space 可能休眠，首次打开会稍慢；重启后房间码失效。
 
 ### 一键启动（推荐）
 
