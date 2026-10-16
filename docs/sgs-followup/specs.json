@@ -1,0 +1,25 @@
+{
+  "description": "Bounded candidate records retained for the conventional inventory; not selectable content.",
+  "excluded_or_held": [
+    {
+      "hero": "孙鲁育",
+      "status": "held_version_conflict",
+      "reason": "官方写本回合，BWIKI精确经典写本阶段，涉及穆穆禁杀、魅步授予止息及距离持续期。核心持续时间未证实，不能当宿主选择。"
+    },
+    {
+      "hero": "吴懿",
+      "status": "held_intrinsic_event_timing",
+      "reason": "奔袭同张杀触发减距与追加目标/无视防具的取样时机需要同产品精确证据，不把猜测放为宿主政策。"
+    },
+    {
+      "hero": "韩浩史涣",
+      "status": "held_intrinsic_event_timing",
+      "reason": "慎断与落英/纵玄等同批弃牌争用及勇略造成伤害的完整归属追踪尚未独立完成；未达到本批ready标准。"
+    },
+    {
+      "hero": "周仓",
+      "status": "held_intrinsic_event_timing",
+      "reason": "忠勇对多目标/多闪实体获取、额外杀的距离次数与拿闪失败续杀条件未有同产品精确关闭，官方与社区简写不能代替。"
+    }
+  ]
+}

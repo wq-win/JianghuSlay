@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-qixing-title youjian-qixing-desc">
+<title id="youjian-qixing-title">七星宝刀 · 江湖原创插画</title>
+<desc id="youjian-qixing-desc">宽弧宝刀，刀身嵌七颗金星，红穗缀于环首。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#d5dee0" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#526e83" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#526e83" stroke-width=".7" opacity=".16"/>
+<g data-art-body="qixing" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M26 75Q36 24 87 10Q68 28 63 52Q56 69 39 83Z" fill="#647e8c" opacity=".22" stroke="none"/>
+<path d="M35 69Q67 51 96 6Q109 40 87 61Q68 78 47 81Z" fill="#9bb7be"/>
+<path d="M96 6Q109 40 87 61Q68 78 47 81L44 76Q73 65 87 49Q101 31 96 6Z" fill="#e7e9d1"/>
+<path d="M42 70Q68 55 92 22" fill="none" stroke="#5f7b8b" stroke-width="2"/>
+<path d="M44 66 54 63 62 56 70 53 76 42 84 38 87 29" fill="none" stroke="#d0ae61" stroke-width="1.5"/>
+<g fill="#e6c36e" stroke="#7f7047" stroke-width=".8">
+<circle cx="44" cy="66" r="3.1"/><circle cx="54" cy="63" r="3.1"/><circle cx="62" cy="56" r="3.1"/><circle cx="70" cy="53" r="3.1"/><circle cx="76" cy="42" r="3.1"/><circle cx="84" cy="38" r="3.1"/><circle cx="87" cy="29" r="3.1"/>
+</g>
+<path d="M29 64 49 82 54 77 34 59Z" fill="#b69654"/>
+<path d="M31 74 39 81 25 95 17 88Z" fill="#526677"/>
+<path d="M23 83 31 89M27 79 35 85" stroke="#dbc28b" stroke-width="2"/>
+<circle cx="17" cy="94" r="6" fill="none" stroke="#ac8a47" stroke-width="3"/>
+<path d="M15 99Q30 94 34 99M16 98Q9 90 5 94" fill="none" stroke="#a55a4c" stroke-width="2.6"/>
+<path d="M21 27v10M16 32h10M104 69v9M100 73h8" stroke="#b69b60" stroke-width="1.4"/>
+</g>
+</svg>

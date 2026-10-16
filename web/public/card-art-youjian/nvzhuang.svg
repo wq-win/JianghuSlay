@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-nvzhuang-title youjian-nvzhuang-desc">
+<title id="youjian-nvzhuang-title">女装 · 江湖原创插画</title>
+<desc id="youjian-nvzhuang-desc">胭脂与青玉配色的交领襦裙，宽袖、结带与细褶裙摆。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#e9d7d6" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#9e6576" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#9e6576" stroke-width=".7" opacity=".16"/>
+<g data-art-body="nvzhuang" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M45 12 59 20 73 12 93 25 110 52 88 63 76 43 79 55 94 93Q60 104 25 93L40 55 43 42 30 62 9 52 27 25Z" fill="#bc7d85"/>
+<path d="M28 25 43 15 48 34 30 61 12 52Z" fill="#d99b9c"/>
+<path d="M74 14 91 26 107 52 88 61 71 34Z" fill="#cc8d96"/>
+<path d="M43 15 58 25 73 14 78 24 58 49 40 26Z" fill="#e9d4b2"/>
+<path d="M43 18 63 40M75 19 52 46" fill="none" stroke="#668c82" stroke-width="5"/>
+<path d="M42 48H77L79 56H39Z" fill="#598477"/>
+<path d="M40 56H78L91 91Q60 101 28 91Z" fill="#dcb1a8"/>
+<path d="M47 57 39 93M55 58 50 96M63 58 63 97M71 57 78 94" stroke="#b77f83" stroke-width="2"/>
+<path d="M30 86Q60 96 89 86L92 94Q60 104 26 94Z" fill="#658b80"/>
+<path d="M29 90Q60 100 91 90" fill="none" stroke="#d8c188" stroke-width="1.8"/>
+<path d="M12 48 31 57M88 57 107 48" stroke="#5f8b80" stroke-width="6"/>
+<path d="M13 49 29 56M90 56 105 49" stroke="#dcc78d" stroke-width="1.3"/>
+<path d="M59 52Q43 39 41 49Q42 58 59 52Q73 39 78 47Q81 56 59 52Z" fill="#dfc99b"/>
+<path d="M58 54 50 73 59 70 61 57 71 76 76 70 64 54" fill="#e0c69a"/>
+<circle cx="60" cy="52" r="3.2" fill="#9e645e"/>
+<path d="M21 35q4-8 8 0-4 8-8 0ZM91 36q4-8 8 0-4 8-8 0Z" fill="#eac6b2" stroke="none"/>
+<path d="M31 10 27 7M90 13 95 9" stroke="#b99387" stroke-width="1.4"/>
+</g>
+</svg>

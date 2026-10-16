@@ -1,0 +1,26 @@
+{
+  "name": "jianghu-slay-browser",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Full Jianghu Slay card game, running entirely in the browser",
+  "scripts": {
+    "build": "node scripts/build-browser.mjs",
+    "build:browser": "node scripts/build-browser.mjs",
+    "test:ui": "npm run build && node --test --test-concurrency=2 tests/browser-ui.test.mjs tests/card-art-layout.test.mjs tests/skill-ui.test.mjs tests/skill-ui-audit.test.mjs tests/conventional-scope-ui.test.mjs",
+    "test": "npm run test:rules && npm run test:ui",
+    "test:all": "npm test && npm run test:conventional:all-games",
+    "export:inventory": "node scripts/export-conventional-inventory.mjs",
+    "test:rules": "node --test --test-concurrency=2 web/local/tests/card-use-history.test.mjs web/local/tests/hero-lifecycle.test.mjs web/local/tests/seat-order.test.mjs web/local/tests/equipment-hooks.test.mjs web/local/tests/equipment-game.test.mjs web/local/tests/equipment-session.test.mjs web/local/tests/virtual-card-identity.test.mjs web/local/tests/card-response-core.test.mjs web/local/tests/general-skill-runtime.test.mjs tests/ai-team-decisions.test.mjs tests/card-face-projection.test.mjs web/local/tests/source-faction-context-contract.test.mjs web/local/tests/conventional-scope-boundary.test.mjs tests/conventional-scope-regression.test.mjs",
+    "test:conventional:all-games": "node scripts/test_conventional_all_games.mjs"
+  },
+  "dependencies": {
+    "htm": "3.1.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "jsdom": "26.1.0"
+  }
+}

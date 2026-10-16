@@ -1,0 +1,203 @@
+{
+  "description": "Bounded candidate records retained for the conventional inventory; not selectable content.",
+  "quarantined_candidates": [
+    {
+      "id": "sgs.adapted.base.hero.zhang-chun-hua",
+      "source_name": "张春华",
+      "suggested_display_name": "张春华",
+      "product": "三国杀移动版",
+      "variant": "mainland-mobile-base-identity-catalog-2026-10-15",
+      "snapshot_date": "2026-10-15",
+      "source_faction": "魏",
+      "max_hp": 3,
+      "gender": "female",
+      "starting_hp": 3,
+      "starting_hp_direct_source_value": null,
+      "starting_hp_basis": "F0 host normal-full-HP initialization, not independently documented mobile starting HP",
+      "source_refs": [
+        "mobile-zhangchunhua",
+        "bwiki-zhangchunhua",
+        "mobile-zhangchunhua-guide",
+        "sina-zhangchunhua-2011"
+      ],
+      "metadata_provenance": {
+        "max_hp": "dated same-product BWIKI classic explicit number+icons",
+        "gender": "same-product explicit game gender",
+        "faction": "official and same-product classic",
+        "initial_hp": "not separately documented"
+      },
+      "intrinsic_skill_inventory": [
+        "绝情",
+        "伤逝"
+      ],
+      "granted_skill_inventory": [],
+      "personal_lord_skills": [],
+      "rules_complete_inventory_verified": true,
+      "current_mobile_client_verified": false,
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "implementation_status": "research_only",
+      "readiness": "blocked_material_procedure",
+      "mode_status": "identity_rules_and_lord_system_pending",
+      "skills": [],
+      "excluded_variants": [],
+      "ui_requirements": [
+        "Complete intrinsic skill list, source variant and verification status visible.",
+        "Original-created art only; source illustrations are not application assets.",
+        "Never expose opponent hand identities for blind selections."
+      ],
+      "intrinsic_official_panels": [
+        {
+          "name": "绝情",
+          "hidden": false,
+          "rule_text": "锁定技，你即将造成的伤害视为失去体力。",
+          "rule_text_sha256": "1f6190a9ca6065188b5a0aaf1c0446ff122f150ee7e6c81468a4da97974bcca2",
+          "html_line": 190
+        },
+        {
+          "name": "伤逝",
+          "hidden": true,
+          "rule_text": "当你的手牌数小于X时，你可以将手牌摸至X张。（X为你已损失的体力值数）",
+          "rule_text_sha256": "84f07133f52b9710f54606beaa44fd006aa626874fb0fa560e49f05bf92b0ff1",
+          "html_line": 191
+        }
+      ],
+      "blockers": [
+        "Selected official/mobile classic 伤逝 text omits discard-stage suppression; dated2011FAQ expressly includes exclusion. Do not import without same-product matching procedure.",
+        "Selected source does not settle hand/HP/maxHP event windows and nested dying suppression/cap. This affects infinite discard-refill and immediate rescue access."
+      ],
+      "partial_findings": [
+        "绝情 early damage-to-HP-loss replacement, not damage-after; official mobileguide70 confirms no kill reward and no elemental chain.",
+        "No 2-card cap, no locked伤逝 or 界 optional upgrade imported."
+      ]
+    },
+    {
+      "id": "sgs.adapted.base.hero.cao-zhi",
+      "source_name": "曹植",
+      "suggested_display_name": "曹植",
+      "product": "三国杀移动版",
+      "variant": "mainland-mobile-base-identity-catalog-2026-10-15",
+      "snapshot_date": "2026-10-15",
+      "source_faction": "魏",
+      "max_hp": 3,
+      "gender": "male",
+      "starting_hp": 3,
+      "starting_hp_direct_source_value": null,
+      "starting_hp_basis": "F0 host normal-full-HP initialization, not independently documented mobile starting HP",
+      "source_refs": [
+        "mobile-caozhi",
+        "bwiki-caozhi",
+        "bwiki-jiushi-caozhi",
+        "bwiki-luoying-caozhi",
+        "public-caozhi-faq-2012"
+      ],
+      "metadata_provenance": {
+        "max_hp": "dated same-product BWIKI classic explicit number+icons",
+        "gender": "same-product explicit game gender",
+        "faction": "official and same-product classic",
+        "initial_hp": "not separately documented"
+      },
+      "intrinsic_skill_inventory": [
+        "落英",
+        "酒诗"
+      ],
+      "granted_skill_inventory": [],
+      "personal_lord_skills": [],
+      "rules_complete_inventory_verified": true,
+      "current_mobile_client_verified": false,
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "implementation_status": "research_only",
+      "readiness": "blocked_material_provenance_procedure",
+      "mode_status": "identity_rules_and_lord_system_pending",
+      "skills": [],
+      "excluded_variants": [],
+      "ui_requirements": [
+        "Complete intrinsic skill list, source variant and verification status visible.",
+        "Original-created art only; source illustrations are not application assets.",
+        "Never expose opponent hand identities for blind selections."
+      ],
+      "intrinsic_official_panels": [
+        {
+          "name": "落英",
+          "hidden": false,
+          "rule_text": "当其他角色的一张梅花牌因弃置或判定而置入弃牌堆时，你可以获得之。",
+          "rule_text_sha256": "a706e59e8a6290f3c0af95e7f8af200cc13ede2294a7cc89dfcedf78e8f193aa",
+          "html_line": 187
+        },
+        {
+          "name": "酒诗",
+          "hidden": true,
+          "rule_text": "当你需要使用【酒】时，若你的武将牌正面向上，你可以翻面，视为使用一张【酒】。当你受到伤害后，若你的武将牌背面向上，你可以翻面。",
+          "rule_text_sha256": "af517ae2b37597f7c4f2bb66109f6f66d548acdcf15f474ecf64615ff05e9409",
+          "html_line": 188
+        }
+      ],
+      "blockers": [
+        "Exact death-cleanup ownership/discard provenance not resolved by modern same-product source; matching2012FAQ includes ordinary deceased H/E discard, so blanket death exclusion is not justified.",
+        "Need reconcile retrial-original judge discard and final judge acquisition order with current mobile procedure; do not merely scan discard pile."
+      ],
+      "partial_findings": [
+        "All two skills official verified. Mobile2024酒诗 page explicitly requires facedown when receiving damage AND facedown afterward.",
+        "Ordinary other owned club H/E discard and final other judgment club qualify; use/play/recast/pindian cleanup do not.",
+        "2012FAQ says replaced original club judgment and final replacement club judgment each qualify; ordinary death H/E qualifies but unowned J/specialpile cleanup does not. These remain tiered historical evidence, not modern certification.",
+        "Jiushi virtualWine subject shared Wine usequota, no independent intrinsic oncecap; own dyingWine allowed onlyfaceup. Faceupdamage->dyingwine cannot flip back on same damage."
+      ]
+    },
+    {
+      "id": "sgs.adapted.base.hero.guo-huai",
+      "source_name": "郭淮",
+      "suggested_display_name": "郭淮",
+      "product": "三国杀移动版",
+      "variant": "mainland-mobile-base-identity-catalog-2026-10-15",
+      "snapshot_date": "2026-10-15",
+      "source_faction": "魏",
+      "max_hp": 4,
+      "gender": "male",
+      "starting_hp": 4,
+      "starting_hp_direct_source_value": null,
+      "starting_hp_basis": "F0 host normal-full-HP initialization, not independently documented mobile starting HP",
+      "source_refs": [
+        "mobile-guohuai",
+        "bwiki-guohuai"
+      ],
+      "metadata_provenance": {
+        "max_hp": "dated same-product BWIKI classic explicit number+icons",
+        "gender": "same-product explicit game gender",
+        "faction": "official and same-product classic",
+        "initial_hp": "not separately documented"
+      },
+      "intrinsic_skill_inventory": [
+        "精策"
+      ],
+      "granted_skill_inventory": [],
+      "personal_lord_skills": [],
+      "rules_complete_inventory_verified": true,
+      "current_mobile_client_verified": false,
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "implementation_status": "research_only",
+      "readiness": "blocked_material_scope_conflict",
+      "mode_status": "identity_rules_and_lord_system_pending",
+      "skills": [],
+      "excluded_variants": [],
+      "ui_requirements": [
+        "Complete intrinsic skill list, source variant and verification status visible.",
+        "Original-created art only; source illustrations are not application assets.",
+        "Never expose opponent hand identities for blind selections."
+      ],
+      "intrinsic_official_panels": [
+        {
+          "name": "精策",
+          "hidden": false,
+          "rule_text": "出牌阶段结束时，若你于此回合内使用过的牌数量不小于你的体力值，则你可以摸两张牌。",
+          "rule_text_sha256": "8eb234769069ec82ad97e07bcddd2d37439449435c24298e3ad85d65f2e063a0",
+          "html_line": 186
+        }
+      ],
+      "blockers": [
+        "Official 精策 counts cards used THIS TURN at playphaseend; same-product classic counts THIS PLAY PHASE. Extra phases and earlier-turn Wuxie differ. Do not silently merge."
+      ]
+    }
+  ]
+}
