@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-poison-title youjian-poison-desc">
+<title id="youjian-poison-title">毒 · 江湖原创插画</title>
+<desc id="youjian-poison-desc">红蜡封口的青玻璃毒瓶，内盛毒液，瓶身有骷髅警示签。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#dde3bc" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#69804f" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#69804f" stroke-width=".7" opacity=".16"/>
+<g data-art-body="poison" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="60" cy="94" rx="31" ry="5" fill="#9da776" opacity=".36" stroke="none"/>
+<path d="M45 20H74V38Q78 43 84 49Q92 59 91 78Q90 96 60 98Q29 96 28 78Q27 60 36 49L45 39Z" fill="#b5c69a"/>
+<path d="M34 61Q60 69 85 61L85 79Q82 92 60 92Q38 92 34 79Z" fill="#718b4c"/>
+<ellipse cx="59.5" cy="61" rx="25.5" ry="5.5" fill="#a7b871" stroke="#657b46" stroke-width="1.4"/>
+<path d="M40 51Q33 61 35 75M41 85l6 3" fill="none" stroke="#e8edc8" stroke-width="4"/>
+<path d="M79 55Q87 69 81 83" fill="none" stroke="#587346" stroke-width="2"/>
+<path d="M43 14H76V24H43Z" fill="#a28654"/>
+<path d="M46 5Q60 2 73 5L71 16H48Z" fill="#99794b"/>
+<path d="M45 13Q60 17 75 13L77 25 72 29 67 25 62 30 58 25 51 28 46 24 42 26Z" fill="#a75643"/>
+<path d="M47 17Q60 20 71 17" fill="none" stroke="#d48869" stroke-width="2"/>
+<path d="M44 30Q60 34 75 30M45 34Q60 38 74 34" fill="none" stroke="#a58c53" stroke-width="2.5"/>
+<path d="M75 32Q95 36 92 54L86 62" fill="none" stroke="#997b48" stroke-width="1.8"/>
+<path d="M47 54 74 55 76 83 45 83Z" fill="#e2d49c"/>
+<path d="M54 63Q60 57 66 63L66 69 63 72V76H56V72L53 69Z" fill="#65714a" stroke="none"/>
+<circle cx="57" cy="66" r="1.5" fill="#e9dfae" stroke="none"/><circle cx="63" cy="66" r="1.5" fill="#e9dfae" stroke="none"/>
+<path d="M52 77 68 80M52 80 68 77" stroke="#65714a" stroke-width="2"/>
+<path d="M87 57 97 60 95 75 83 71Z" fill="#c8b27a"/>
+<path d="M89 63 92 67 88 69" fill="none" stroke="#795f3d" stroke-width="1.6"/>
+<circle cx="78" cy="73" r="2" fill="#b1c482" stroke="none"/><circle cx="40" cy="78" r="1.5" fill="#b1c482" stroke="none"/>
+</g>
+</svg>

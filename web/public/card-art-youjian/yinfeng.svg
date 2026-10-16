@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-yinfeng-title youjian-yinfeng-desc">
+<title id="youjian-yinfeng-title">引蜂衣 · 江湖原创插画</title>
+<desc id="youjian-yinfeng-desc">花纹蜜黄色短衣，周围飞舞三只黑金蜜蜂。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#e9dfbd" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#a5803f" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#a5803f" stroke-width=".7" opacity=".16"/>
+<g data-art-body="yinfeng" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M45 16 60 24 75 16 92 32 83 48 76 43 83 88Q60 98 37 88L44 43 37 48 28 32Z" fill="#c3a35a"/>
+<path d="M45 17 60 27 75 17 69 37H51Z" fill="#e7d49b"/>
+<path d="M46 18 58 38 76 18M58 38 55 58" fill="none" stroke="#8a7143" stroke-width="3"/>
+<path d="M41 57Q60 62 79 57L80 65Q60 70 40 65Z" fill="#8b7644"/>
+<path d="M59 59h8v8h-8Z" fill="#e3c27b"/>
+<path d="M43 72 49 69 55 72V79L49 83 43 79ZM64 73 70 69 76 73V80L70 84 64 80Z" fill="none" stroke="#f0daa0" stroke-width="2"/>
+<path d="M46 87 46 83M60 89 60 77M74 87 74 83" stroke="#9e8144" stroke-width="1.4"/>
+<path d="M37 32 43 36M79 36 85 32" stroke="#ead49b" stroke-width="3"/>
+<g transform="translate(14 25) rotate(-23)">
+<ellipse cx="-3" cy="-6" rx="4" ry="6" fill="#f1edda" stroke="#899d8e" stroke-width="1"/><ellipse cx="5" cy="-6" rx="4" ry="6" fill="#f1edda" stroke="#899d8e" stroke-width="1"/>
+<ellipse rx="9" ry="5.6" fill="#d5ab4b"/><path d="M-3-4V4M2-5V5" stroke="#4d4b34" stroke-width="2.5"/><circle cx="9" cy="-1" r="3" fill="#484b36"/>
+</g>
+<g transform="translate(101 46) rotate(20)">
+<ellipse cx="-3" cy="-6" rx="4" ry="6" fill="#f1edda" stroke="#899d8e" stroke-width="1"/><ellipse cx="5" cy="-6" rx="4" ry="6" fill="#f1edda" stroke="#899d8e" stroke-width="1"/>
+<ellipse rx="9" ry="5.6" fill="#d5ab4b"/><path d="M-3-4V4M2-5V5" stroke="#4d4b34" stroke-width="2.5"/><circle cx="-9" cy="-1" r="3" fill="#484b36"/>
+</g>
+<g transform="translate(20 77) rotate(-25) scale(.85)">
+<ellipse cx="-3" cy="-6" rx="4" ry="6" fill="#f1edda" stroke="#899d8e" stroke-width="1"/><ellipse cx="5" cy="-6" rx="4" ry="6" fill="#f1edda" stroke="#899d8e" stroke-width="1"/>
+<ellipse rx="9" ry="5.6" fill="#d5ab4b"/><path d="M-3-4V4M2-5V5" stroke="#4d4b34" stroke-width="2.5"/><circle cx="9" cy="-1" r="3" fill="#484b36"/>
+</g>
+<path d="M9 43Q8 58 18 57M102 65q5 14-8 16" fill="none" stroke="#ac985c" stroke-width="1.3" stroke-dasharray="2 3"/>
+</g>
+</svg>

@@ -1,0 +1,119 @@
+{
+  "description": "Bounded candidate records retained for the conventional inventory; not selectable content.",
+  "held_candidates": [
+    {
+      "key": "chang-hui",
+      "hero": "常惠",
+      "max_hp": 3,
+      "source_refs": [
+        "primary-silkroad"
+      ],
+      "full_published_skill_inventory": [
+        "汉威",
+        "制夷"
+      ],
+      "readiness": "held_intrinsic_choice_edges",
+      "known_complete_rule_summary": [
+        "汉威：自己出牌阶段将手牌或装备区一张装备置入另一角色对应空装备栏，常惠指定被杀目标，装备接受者可用一张杀或拒绝；四个原生装备栏均可。",
+        "制夷：常惠回合里另一角色造成伤害时，可让两人各摸1或由常惠弃该角色1牌；官方攻略明确不限次数、不限汉威来源，自己的伤害不触发。"
+      ],
+      "unresolved": [
+        {
+          "id": "CH-ZONE",
+          "question": "制夷“弃置其一张牌”是否包含判定区？官方明确可弃装备，但未在此技能给出全部区域边界，不能从解忧技能跨借。"
+        },
+        {
+          "id": "CH-SLASH",
+          "question": "汉威的杀之原生距离/次数规则、无可杀目标时能否纯装备、以及目标宣布时点，需要同版本原生裁定，不能直接搬用三国杀明策。"
+        }
+      ],
+      "do_not_merge": "陈宫明策把牌交手牌并视为杀/摸1二选一，还有智迟；常惠装备入栏+真实可拒绝杀+制夷，整包不等价。"
+    },
+    {
+      "key": "jie-you-gong-zhu",
+      "hero": "解忧公主",
+      "max_hp": 3,
+      "source_refs": [
+        "primary-silkroad",
+        "primary-anniversary"
+      ],
+      "full_published_skill_inventory": [
+        "妆变",
+        "择惠"
+      ],
+      "readiness": "held_intrinsic_state_edges",
+      "known_complete_rule_summary": [
+        "妆变：每回合限一次，某角色本回合首次在摸牌阶段外获牌时，可取其1牌并改变其性别，直到该角色受2次伤害；可以以自己为目标，官方列手牌/装备/判定牌可取得。",
+        "择惠：本人回合结束时，可选至多2名与本人当前性别相同的角色各摸1。"
+      ],
+      "unresolved": [
+        {
+          "id": "JY-REAPPLY",
+          "question": "第一次性别变更未到2次伤害时，后续回合再次妆变同一角色，性别翻转与剩余次数如何叠加/重置/恢复？"
+        },
+        {
+          "id": "JY-FIRST-GAIN",
+          "question": "一回合的首次阶段外获牌资格按每个角色分别记，还是本回合全场首次事件？主文与口语解析没有消除所有含义；拒绝后的后来不同角色资格不能猜。"
+        }
+      ]
+    },
+    {
+      "key": "zhou-gong",
+      "hero": "周公",
+      "max_hp": null,
+      "source_refs": [
+        "primary-zhougong"
+      ],
+      "full_published_skill_inventory": [
+        "解梦",
+        "元圣"
+      ],
+      "readiness": "held_hp_and_intrinsic_choice_edges",
+      "known_complete_rule_summary": [
+        "解梦：其他角色出牌阶段开始，可展示该角色全部手牌并获得其中1张。",
+        "元圣：每个其他角色回合，首次获牌的颜色记为圣；其他角色对本人使用同色牌时，摸1并令该牌对本人无效，持续到此回合结束。"
+      ],
+      "unresolved": [
+        {
+          "id": "ZG-HP",
+          "question": "该发布正文无血量，图片未读成功，需明确数值证据。"
+        },
+        {
+          "id": "ZG-BATCH",
+          "question": "首次同时获得红黑混合多张牌时，圣记录哪些颜色、由谁选、是否两色都记？不能擅选数组首牌。"
+        }
+      ]
+    },
+    {
+      "key": "zhang-zhong-jing",
+      "hero": "张仲景",
+      "max_hp": null,
+      "source_refs": [
+        "primary-anniversary"
+      ],
+      "full_published_skill_inventory": [
+        "济世",
+        "驱寒"
+      ],
+      "readiness": "held_hp_and_high_dependency_mark_choices",
+      "known_complete_rule_summary": [
+        "济世：有角色受伤后，可选其手牌某一花色全弃并等量摸，或全取得并令其回1血；每回合四种花色分别限1次。",
+        "驱寒：别人获黑色牌后，给其等量手牌加寒；其下次失牌时这些标记牌弃置；使用寒手牌则受1伤。"
+      ],
+      "unresolved": [
+        {
+          "id": "ZZJ-HP",
+          "question": "正文未给血量，不能由其他医者推断。"
+        },
+        {
+          "id": "ZZJ-SELECT",
+          "question": "济世选择的花色可否为空、如何获知隐藏花色分布；驱寒由谁选标记牌、重标规则、黑牌批次与混色批次计数？"
+        },
+        {
+          "id": "ZZJ-MARK-ORDER",
+          "question": "寒手牌使用与“下次失牌”弃寒同时发生时精确顺序、伤害来源、一次用多张寒是否每张伤害？"
+        }
+      ]
+    }
+  ]
+}

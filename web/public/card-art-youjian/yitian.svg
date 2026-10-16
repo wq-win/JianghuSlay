@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-yitian-title youjian-yitian-desc">
+<title id="youjian-yitian-title">倚天剑 · 江湖原创插画</title>
+<desc id="youjian-yitian-desc">直立的银青长剑冲开云层，双翼剑格与青玉剑首。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#d6e5dd" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#4c8693" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#4c8693" stroke-width=".7" opacity=".16"/>
+<g data-art-body="yitian" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M61 7 24 77H98Z" fill="#bad7cc" opacity=".42" stroke="none"/>
+<path d="M9 74Q8 65 18 64Q21 53 34 60Q40 50 50 60Q57 57 60 65Q72 52 82 61Q93 53 99 64Q113 63 112 75Z" fill="#e7e8ce" stroke="#83a296" stroke-width="1.4"/>
+<path d="M10 75H44M80 75h28M15 80h24M87 80h17" stroke="#a1b6a4" stroke-width="1.3"/>
+<path d="M53 64 53 23 60 3 67 23 67 64 60 73Z" fill="#e7eee2"/>
+<path d="M60 7 60 68 67 62 67 23Z" fill="#8fbcc0" stroke="none"/>
+<path d="M60 10V62" stroke="#fbf3cb" stroke-width="1.3"/>
+<path d="M54 31 60 25 66 31M54 39 60 33 66 39" fill="none" stroke="#7a9b99" stroke-width="1.1"/>
+<path d="M34 61Q46 66 54 62H66Q74 66 86 61L80 72 65 69H55L40 72Z" fill="#ad9450"/>
+<path d="M43 65 53 68M67 68 77 65" stroke="#f0d99c" stroke-width="1.7"/>
+<path d="M55 70H65V92H55Z" fill="#427a79"/>
+<path d="M55 76h10M55 82h10M55 88h10" stroke="#d2c58c" stroke-width="1.6"/>
+<path d="M60 89 67 95 60 102 53 95Z" fill="#8fac9a"/>
+<path d="M60 92 63 95 60 98 57 95Z" fill="#e6d58f" stroke="none"/>
+<path d="M43 15 39 23M78 15 82 23M32 34h-8M88 34h8" stroke="#82a99f" stroke-width="1.5"/>
+</g>
+</svg>

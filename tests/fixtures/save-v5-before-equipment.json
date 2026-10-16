@@ -1,0 +1,23 @@
+{
+  "source_version": 5,
+  "source_commit": "bfb053eb2c8ef6768eb7f460b84202ba85fdd8a1",
+  "save": {
+    "version": 2,
+    "engine_version": "jianghu-browser-expansion-2",
+    "content_version": "jianghu-adapted-2026-10-15-b",
+    "game_id": "local-mv99vzsn-34-1",
+    "seed": 112,
+    "config": {
+      "hero_index": 30,
+      "hero_id": "sgs.adapted.base.hero.zhu-ge-liang",
+      "mode": "ai2",
+      "ai_hero_index": 27,
+      "ai_hero_id": "sgs.adapted.base.hero.zhao-yun",
+      "ai2_hero_index": 28,
+      "ai2_hero_id": "sgs.adapted.base.hero.ma-chao"
+    },
+    "actions": [],
+    "checkpoint": "c86d10d8",
+    "updated_at": "2026-10-15T08:24:27.391Z"
+  }
+}

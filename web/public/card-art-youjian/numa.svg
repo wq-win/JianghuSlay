@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-numa-title youjian-numa-desc">
+<title id="youjian-numa-title">驽马 · 江湖原创插画</title>
+<desc id="youjian-numa-desc">垂首慢行的瘦褐马，旧鞍毯打着醒目的补丁。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#dfd8bf" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#8c7153" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#8c7153" stroke-width=".7" opacity=".16"/>
+<g data-art-body="numa" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M15 94H103" stroke="#9a9879" stroke-width="1.5"/>
+<path d="M34 65 34 81 28 92 35 94 43 83 45 67M65 68 68 81 74 94 81 94 77 79 77 64" fill="#87745a"/>
+<path d="M29 43Q20 44 18 64Q17 73 12 77L11 66Q14 57 12 51Q14 37 28 36" fill="#574d3b"/>
+<path d="M25 40Q32 34 43 39Q59 45 69 34L76 25 89 33 92 48 108 59 109 68 98 74 86 67 77 51 77 65Q64 76 46 68L38 63 32 78 26 91H18L24 75 22 54Z" fill="#ab8a64"/>
+<path d="M78 29 79 15 85 27 89 19 91 33" fill="#a48766"/>
+<path d="M75 25 70 35 73 44 79 51 79 40 82 31Z" fill="#5d513e"/>
+<path d="M70 37Q59 48 40 42L39 60Q54 71 72 60Z" fill="#7d927b"/>
+<path d="M43 44 42 57Q55 64 68 57L68 42" fill="none" stroke="#d1b47d" stroke-width="2"/>
+<path d="M49 49 61 47 64 58 51 61Z" fill="#ba9b75"/>
+<path d="M50 48 52 51M57 47 58 50M60 55 64 54M53 58 54 61" stroke="#706848" stroke-width="1.3"/>
+<path d="M43 40Q52 37 58 43L65 39 68 45Q55 49 43 44Z" fill="#75563e"/>
+<path d="M47 66 46 82 50 94H58L54 79 58 69" fill="#b99b75"/>
+<path d="M19 91h8M50 93h8M75 93h7M29 92h7" stroke="#534b39" stroke-width="3"/>
+<path d="M90 51 94 48M98 66 103 64" stroke="#534b39" stroke-width="1.8"/>
+<path d="M87 41 85 54 98 66 109 61M87 49Q76 65 63 61" fill="none" stroke="#69553d" stroke-width="1.8"/>
+<path d="M30 48 33 54M31 59 34 62M62 73 65 77" stroke="#89704f" stroke-width="1.3"/>
+</g>
+</svg>

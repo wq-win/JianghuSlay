@@ -18,3 +18,10 @@ web/dist/
 .DS_Store
 *.swp
 *~
+
+# Browser single-player build
+node_modules/
+qa-output/
+
+# A shared dependency symlink in independent local worktrees
+node_modules

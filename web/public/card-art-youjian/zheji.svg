@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-zheji-title youjian-zheji-desc">
+<title id="youjian-zheji-title">折戟 · 江湖原创插画</title>
+<desc id="youjian-zheji-desc">断成两截的旧戟，斑驳铜刃与散落木屑。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#e2d4b8" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#87654d" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#87654d" stroke-width=".7" opacity=".16"/>
+<g data-art-body="zheji" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M13 88Q30 82 47 88M72 91H103" fill="none" stroke="#9b8664" stroke-width="1.5"/>
+<path d="M20 94 48 55 53 61 59 60 27 99Z" fill="#8a6243"/>
+<path d="M25 93 47 65M31 86 43 71" stroke="#bc9860" stroke-width="2"/>
+<path d="M59 48 63 36 85 8 91 12 69 44 66 47 65 42Z" fill="#92734c"/>
+<path d="M68 38 84 16" stroke="#c5aa70" stroke-width="2"/>
+<path d="M77 18 80 7 86 3 88 16 82 24Z" fill="#8d9d83"/>
+<path d="M80 24 99 21 108 11Q116 27 101 42L91 44 91 33 76 31Z" fill="#9ea889"/>
+<path d="M104 21 104 29 97 36M95 28 89 29" stroke="#dae0bd" stroke-width="2"/>
+<path d="M76 23 64 20 63 27 75 32" fill="#a58c50"/>
+<path d="M72 32 82 38M69 36 79 42" stroke="#b69a5d" stroke-width="3"/>
+<path d="M74 13 77 17M99 37 103 35M84 26 88 25" stroke="#687e6b" stroke-width="2"/>
+<path d="M43 49 49 44 50 51ZM59 66 64 61 65 69ZM65 53 69 50 69 56Z" fill="#b5945b"/>
+<path d="M34 55 29 52M57 37 56 31M73 63 79 65" fill="none" stroke="#9a7550" stroke-width="1.6"/>
+<path d="M19 93 26 98M22 87 30 92" stroke="#524c38" stroke-width="2.4"/>
+</g>
+</svg>

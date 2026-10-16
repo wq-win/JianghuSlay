@@ -186,7 +186,7 @@ async def match_ws(websocket: WebSocket, match_id: str, token: str) -> None:
         seat.websocket = None
 
 
-web_public = Path(__file__).resolve().parent.parent / "web" / "public"
+web_public = Path(__file__).resolve().parent.parent / "web" / "server-public"
 if web_public.exists():
     app.mount("/static", StaticFiles(directory=str(web_public)), name="static")
 

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="104" viewBox="0 0 120 104" role="img" aria-labelledby="youjian-zhanxiang-title youjian-zhanxiang-desc">
+<title id="youjian-zhanxiang-title">战象 · 江湖原创插画</title>
+<desc id="youjian-zhanxiang-desc">披青铜鳞甲与绛红鞍毯的巨象，长鼻卷曲，白牙向前。原创矢量图形，未使用官方游戏插画或外部图像。</desc>
+<ellipse cx="60" cy="53" rx="48" ry="44" fill="#d7dfcc" opacity=".75"/>
+<path d="M16 82Q8 60 17 36M100 23Q113 39 108 66" fill="none" stroke="#617e7a" stroke-width=".8" opacity=".22"/>
+<path d="M26 92H94" fill="none" stroke="#617e7a" stroke-width=".7" opacity=".16"/>
+<g data-art-body="zhanxiang" stroke="#494a37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M13 95H108" stroke="#899777" stroke-width="1.4"/>
+<path d="M28 64 28 91 40 91 43 65M68 65 70 92 82 92 83 63" fill="#708b84"/>
+<path d="M22 41Q12 42 10 61L7 67" fill="none" stroke="#6e8375" stroke-width="4"/>
+<path d="M22 31Q43 22 67 29Q75 23 88 30L100 44 98 64 100 78Q108 83 112 70Q115 89 102 93Q89 95 87 77L84 68 80 70 78 94H66L64 72Q49 76 38 70L34 94H21L21 66Q14 49 22 31Z" fill="#8fa69a"/>
+<path d="M66 33Q84 23 87 45L82 67Q67 66 63 54Z" fill="#acc0aa"/>
+<path d="M69 39Q77 33 81 42L77 58Q68 57 68 47" fill="none" stroke="#789887" stroke-width="1.7"/>
+<path d="M24 29Q44 23 65 30L65 62Q44 73 24 61Z" fill="#9d5b4d"/>
+<path d="M28 31Q44 27 61 32V57Q44 65 28 57Z" fill="#608d83"/>
+<path d="M29 39q5 10 10 0 5 10 10 0 5 10 11 0M29 48q5 10 10 0 5 10 10 0 5 10 11 0" fill="none" stroke="#c4b77c" stroke-width="2"/>
+<path d="M25 61 29 68 34 64 39 70 44 66 49 70 54 65 59 67 64 61" fill="#bc9b55"/>
+<path d="M29 25 33 17H55L60 26Z" fill="#a88c54"/>
+<path d="M35 17V12H52V17M39 12V7H48V12" fill="#ba9d5a"/>
+<path d="M79 28 88 27 96 35 100 45 88 49 84 39Z" fill="#5b8178"/>
+<path d="M89 29 94 42 88 44" fill="none" stroke="#d2bf7b" stroke-width="2"/>
+<circle cx="92" cy="52" r="1.9" fill="#384d43" stroke="none"/>
+<path d="M86 62Q98 73 108 57Q105 76 91 72Z" fill="#efdfb7"/>
+<path d="M24 90v4M29 90v4M69 90v4M74 90v4M101 88l5-1" stroke="#d1d1ad" stroke-width="2"/>
+<path d="M44 33v25" stroke="#a78f53" stroke-width="2"/><circle cx="44" cy="46" r="4" fill="#cdb778"/>
+</g>
+</svg>

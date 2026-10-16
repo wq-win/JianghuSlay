@@ -1,0 +1,291 @@
+{
+  "description": "Bounded candidate records retained for the conventional inventory; not selectable content.",
+  "quarantined_candidates": [
+    {
+      "name": "程普",
+      "official_entry_id": 118,
+      "skills": [
+        "疬火",
+        "醇醪"
+      ],
+      "skill_spelling_alias": {
+        "疬火": "疠火"
+      },
+      "faction": "吴",
+      "gender": "male",
+      "base_max_hp": 4,
+      "initial_hp_explicit": null,
+      "metadata_source": "bwiki-chengpu",
+      "inventory_complete": true,
+      "implementation_ready": false,
+      "release_status": "quarantined_chunlao_count_gap",
+      "blocking_rule_ids": [
+        "C15"
+      ],
+      "other_unclosed_contracts": [
+        "C14",
+        "C16"
+      ],
+      "schema_version": "mobile-base-source-spec.1",
+      "snapshot_date": "2026-10-15",
+      "current_client_verified": false,
+      "full_official_skill_panels": [
+        {
+          "name": "疬火",
+          "hidden": false,
+          "rule_text": "疬[lì]火,当你使用普通【杀】时，你可以将此【杀】改为火【杀】。若此【杀】造成过伤害，你失去1点体力；你使用火【杀】可以多选择一个目标。",
+          "rule_text_sha256": "ffb650ad03935d5fe5e5c12eb408a801f4758f85b01bb8fd662e6b30daca1e3c",
+          "html_line": 184
+        },
+        {
+          "name": "醇醪",
+          "hidden": true,
+          "rule_text": "醇醪[láo],结束阶段，若你没有\"醇\"，你可以将任意张【杀】置于武将牌上，称为\"醇\"；当一名角色处于濒死状态时，你可以移去一张\"醇\"。若如此做，视为该角色使用一张【酒】。",
+          "rule_text_sha256": "844732af7da04e1e52b2d159754be1634ddf88f134a690b1263ece0b907b0efb",
+          "html_line": 185
+        }
+      ],
+      "all_inline_panels_read": true,
+      "rules": [
+        {
+          "id": "C1",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "使用普通杀时可选择把这一张杀改为火杀；是使用而非仅打出。普通杀以外的雷杀不在此转换条件内。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-lihuo-chengpu"
+          ],
+          "status": "source_backed",
+          "notes": "普通杀转换与火杀额外目标是两条效果；官网字形疬、BWIKI疠仅为记录差异，保留两者，不另造技能。"
+        },
+        {
+          "id": "C2",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "通过疬火转换的同一张杀结算结束后，若造成过伤害，程普失去1点体力。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chengpu",
+            "bwiki-lihuo-chengpu"
+          ],
+          "status": "source_backed",
+          "notes": null
+        },
+        {
+          "id": "C3",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "一张转换杀有多个目标或造成多点伤害仍只失去1HP；全部未伤害则不失去HP。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-lihuo-chengpu"
+          ],
+          "status": "textual_derivation",
+          "notes": "以“此杀造成过伤害”的布尔履历结算，不能每目标/每点扣血；历史FAQ亦作此解释，但不作为移动认证。"
+        },
+        {
+          "id": "C4",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "使用火杀时可多选择一个合法目标，包括原生火杀、疬火转换和其他合法火杀来源。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-lihuo-chengpu",
+            "official-ol-chengpu-guide-2016"
+          ],
+          "status": "source_backed",
+          "notes": "不含无视距离或无视目标禁令；额外目标是选择性的，不是必须。"
+        },
+        {
+          "id": "C5",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "原生火杀与朱雀羽扇转换的火杀可以有额外目标，但不会因为疬火第二分支而失去体力。",
+          "sources": [
+            "official-ol-chengpu-guide-2016",
+            "bwiki-lihuo-chengpu"
+          ],
+          "status": "historical_matching_rule_corroboration",
+          "notes": "移动技能分支可推导同结论，2016官方OL攻略明确给出。朱雀与疬火同时可发动的UI询问先后仅是旧OL观察，不能移植为移动通则。"
+        },
+        {
+          "id": "C6",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "由丈八蛇矛等产生的普通杀、明策要求使用的普通杀可作转换；其余伤害结算、响应及使用次数遵循普通杀的共享规则。",
+          "sources": [
+            "official-ol-chengpu-guide-2016"
+          ],
+          "status": "historical_matching_rule_corroboration",
+          "notes": "使用事件适配，不能靠手牌实体名匹配；决斗/南蛮打出杀不是该技能的使用窗口。"
+        },
+        {
+          "id": "C7",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "等待整张转换杀结算结束后再处理失去HP；不得在第一名目标受伤后立刻扣血。",
+          "sources": [
+            "bwiki-lihuo-chengpu"
+          ],
+          "status": "source_backed",
+          "notes": "铁索传播及每目标救援应属于该杀尚未结束的子流程。历史FAQ明确链传完再扣，但嵌套/终局/死亡取消须宿主合同。"
+        },
+        {
+          "id": "C8",
+          "character": "程普",
+          "skill": "疬火/疠火",
+          "statement": "失去体力不属于伤害；该HP损失可能让程普自己濒死，自己的醇可用于救援。",
+          "sources": [
+            "official-chengpu",
+            "official-ol-chengpu-guide-2016"
+          ],
+          "status": "source_backed",
+          "notes": "一般伤害触发不应由HP损失触发。当前角色死亡、游戏已结束时延迟回调如何清理是宿主边界。"
+        },
+        {
+          "id": "C9",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "结束阶段，只有本人的“醇”堆为空才可以储存任意张杀，置于本人武将牌上成为醇。已有任何醇时不可追加。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chunlao-chengpu"
+          ],
+          "status": "source_backed",
+          "notes": null
+        },
+        {
+          "id": "C10",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "储存来源为手中的杀，正常/火/雷杀都属于杀；不扩大为任意基本牌。",
+          "sources": [
+            "official-chengpu",
+            "official-ol-chengpu-guide-2016"
+          ],
+          "status": "historical_matching_rule_corroboration",
+          "notes": "“任意张”无显式HP上限；手牌上限是此前弃牌阶段通常形成的限制，不得写成醇堆硬上限。零张操作可视作不发动，但界面应避免空循环。"
+        },
+        {
+          "id": "C11",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "醇是独立持久牌堆，存入不是使用杀或弃牌；跨回合保留，不能作为普通手牌或装备使用。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chunlao-chengpu"
+          ],
+          "status": "textual_derivation",
+          "notes": "不应统计成出杀、打出杀、普通弃牌或酒牌；所有权/公开性/死亡清理与移动原因必须由宿主牌区合同定义。"
+        },
+        {
+          "id": "C12",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "一名角色处于濒死状态时，可移去一张已有醇，令该濒死角色视为使用一张酒。可以救自己。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chunlao-chengpu"
+          ],
+          "status": "source_backed",
+          "notes": null
+        },
+        {
+          "id": "C13",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "这张酒的使用者和自救目标都是濒死角色；正常效果是回复1HP，不能替换为程普直接治疗，也不附加进攻酒增伤。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chunlao-chengpu",
+            "mobile-basic-cards-design"
+          ],
+          "status": "source_backed",
+          "notes": "自救酒仍需经过真实酒使用管线，含合法性、禁止使用/目标限制、用牌触发及恢复处理。具体次数统计见C15。"
+        },
+        {
+          "id": "C14",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "该技能不是进入濒死瞬间的回血；其表述为处于濒死，须进入宿主救援响应窗口。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chunlao-chengpu"
+          ],
+          "status": "source_backed",
+          "notes": "与“进入濒死”技能的优先关系、求桃响应起点和嵌套濒死栈要另订共享合同；历史FAQ先补益后醇醪只可作为测试线索。"
+        },
+        {
+          "id": "C15",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "同一次濒死中能否重复移去醇尚未闭合。移动简文每次写一张但没有显式“限一次”；2016官方OL攻略明确只能一次；2014第三方历史FAQ明确可多次。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chunlao-chengpu",
+            "official-ol-chengpu-guide-2016",
+            "historical-360-chengpu-faq"
+          ],
+          "status": "blocked_semantics_gap",
+          "notes": "不能从缺少“限一次”直接推断可循环；也不能把其他产品旧客户端一次性行为冒充移动版规则。必须获取同产品FAQ/客户端可重复观察，或明确选定历史规则分支。"
+        },
+        {
+          "id": "C16",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "“移去醇”的最终目标区、移动原因、实体牌是否作为酒材料及颜色/花色继承，移动简文未明示。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chunlao-chengpu"
+          ],
+          "status": "host_contract_or_source_gap",
+          "notes": "历史FAQ为置入弃牌堆、非弃置且酒不是濒死者自己的牌。该信息不应悄悄作为现代移动精确裁定；可能影响落英和用牌限制。"
+        },
+        {
+          "id": "C17",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "基础包不含移去火醇给程普回血、移去雷醇摸2、不含任意基本牌酿醇，也不含伤害累计/2扣血或火伤+1。",
+          "sources": [
+            "official-chengpu",
+            "bwiki-chengpu",
+            "bwiki-lihuo"
+          ],
+          "status": "version_boundary",
+          "notes": "聚合搜索页把别的版本挂在移动版名下，不能据此修改基础技能。"
+        },
+        {
+          "id": "C18",
+          "character": "程普",
+          "skill": "醇醪",
+          "statement": "完杀若只禁止其他角色用桃，不会因这一桃限制本身禁止濒死者通过醇醪用酒。",
+          "sources": [
+            "official-ol-chengpu-guide-2016"
+          ],
+          "status": "historical_matching_rule_corroboration",
+          "notes": "若其他技能明确禁止酒或非锁定技能失效，须依该技能自身版本规则另行检查，不能给醇醪绝对免禁酒特权。"
+        }
+      ],
+      "host_contracts": [
+        "Base max HP is source backed; full-health initial setup is separate host policy.",
+        "Actual identity faction count, lord HP, death rewards and victory are not certified by these hero pages.",
+        "Ordinary discardable zones and card restrictions need explicit shared engine contracts.",
+        "Per-phase counters identify real phase instances, not UI visits; lifetime-limited skill marks persist across turns.",
+        "Nested response/dying/card-resolution frames must resume correctly and expire ephemeral targeting/HP-loss flags.",
+        "Hidden-hand choices must not reveal or inspect concealed card identities unless a rule authorizes it."
+      ],
+      "id": "sgs.source.pending.cheng-pu",
+      "source_name": "程普",
+      "max_hp": 4,
+      "source_faction": "吴",
+      "personal_lord_skills": [],
+      "granted_skill_inventory": [],
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "source_inventory_ready": true,
+      "mechanism_semantics_fully_resolved": false,
+      "readiness": "quarantined_material_chunlao_response_and_provenance_gaps"
+    }
+  ]
+}

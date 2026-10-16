@@ -1,0 +1,691 @@
+{
+  "description": "Bounded candidate records retained for the conventional inventory; not selectable content.",
+  "heroes": [
+    {
+      "key": "manchong",
+      "id": "sgs.adapted.base.hero.man-chong",
+      "source_name": "满宠",
+      "suggested_display_name": "满宠",
+      "max_hp": 3,
+      "starting_hp": 3,
+      "starting_hp_direct_source_value": null,
+      "starting_hp_basis": "H0 cross-game host initialization",
+      "gender": "male",
+      "source_faction": "魏",
+      "product": "三国杀移动版",
+      "variant": "mobile-classic-identity-official-catalog-selection-2026-10-15",
+      "official_page_id": 125,
+      "source_refs": [
+        "mobile-alt-manchong",
+        "bwiki-manchong"
+      ],
+      "intrinsic_skill_inventory": [
+        "峻刑",
+        "御策"
+      ],
+      "skill_ids": [
+        "sgs.junxing",
+        "sgs.yuce"
+      ],
+      "personal_lord_skills": [],
+      "granted_skill_inventory": [],
+      "acquired_skill_inventory": [],
+      "all_intrinsic_panels_verified": true,
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "source_inventory_ready": true,
+      "implementation_status": "research_only",
+      "readiness": "source_ready_with_explicit_host_requirements",
+      "ready_for_implementation": true,
+      "intrinsic_unresolved": [],
+      "skills": [
+        {
+          "id": "sgs.junxing",
+          "name": "峻刑",
+          "type": "optional_active_discard_type_choice_flip_draw",
+          "timing": "自己的每个真实出牌阶段动作窗口",
+          "quota": "每个出牌阶段限一次，不是每回合限一次；目标选择哪一项均耗本阶段机会",
+          "cost": "弃置自己任意正整数张可弃置手牌；数量和三大类别集合在成功支付时锁定；不允许装备区/判定区/私有牌堆支付",
+          "targets": "一名其他存活角色；不要求其有手牌，不限阵营或距离",
+          "effects": [
+            "由满宠选择成本手牌和目标，再由目标选择分支。成本不可为0张：该主动技要求实际执行弃置成本；不增加3张上限或“每类限一张”的限制。",
+            "分支1只弃目标自己的1张手牌，该牌类别必须不属于满宠本次弃置成本的任何类别。类别为基本/锦囊/装备，不是花色、牌名或普通/延时细类。",
+            "目标没有合格可弃手牌或选择不弃时，执行分支2：先翻面，再摸N张，N为满宠本次实际弃置数。不是摸至N，也不是摸至4。",
+            "目标原来背面朝上时可翻回正面，仍摸N张；不是强制设置为背面。满宠可主动帮助队友复原。目标原来无手牌依然是合法目标。",
+            "若成本含三大类则目标不存在不同于所有成本类别的牌，只能翻面摸牌；成本同类别多张仍令N增大。选择分支1成功后不摸牌、不翻面、不失去体力。",
+            "弃成本与目标弃牌分别发出正常弃置事件，翻面发出双向状态变化事件，可触发现有法恩等。摸牌使用正常牌堆，不创造缺失的牌。"
+          ],
+          "source_refs": [
+            "mobile-alt-manchong",
+            "bwiki-manchong",
+            "bwiki-junxing-detail"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-alt-manchong.html",
+            "line": 184,
+            "rule_sha256": "b503a3e6dc1c4cb21e1034bfe9072baa684bb7c6badd19fcac5637843b42dee1"
+          },
+          "official_panel_hidden": false,
+          "intrinsic_unresolved": [],
+          "limited_marker": null,
+          "awakening_marker": null
+        },
+        {
+          "id": "sgs.yuce",
+          "name": "御策",
+          "type": "optional_after_damage_reveal_type_tax_or_heal",
+          "timing": "每次实际受到伤害并完成救援且自己存活之后",
+          "quota": "每次伤害事件一次机会，不是每一点伤害一次；不设每回合次数上限",
+          "cost": "展示自己1张现有手牌；不弃置、不交给伤害来源，展示后仍归自己",
+          "targets": "固定为该伤害事件的实际来源；由来源决定是否弃不同类别手牌，回血对象固定为满宠",
+          "effects": [
+            "自己必须仍有手牌。通过展示手牌后，伤害来源可弃1张与展示牌三大类别不同的手牌；来源手牌不足/无合格牌/拒绝，满宠回复1点体力。",
+            "来源支付不能用已安装装备、判定牌或私有堆；不能把2张同类别牌凑作1张不同类别。拒绝付款是允许选择，不按敌友自动决定。",
+            "这是伤害后回复，不能防止已发生的伤害、返还全部伤害或把多点伤害拆成多次御策。一次3点伤害存活后最多回复1点。失去体力、伤害完全被防止不会触发。",
+            "若伤害使满宠进入濒死，先按正常求桃救援。被救回并仍有手牌后才有御策；已经死亡不能自救。回复上限封顶。",
+            "同产品2022攻略明确无伤害来源不能发动御策；无来源闪电伤害不能直接让其回1。不要凭“否则”把不存在来源当作拒付。",
+            "按真正伤害来源，不按杀的原使用者：转移/来源改写后的事件来源决定谁选择付款。自己造成自己伤害时来源可为自己，依正常手牌类别检查；展示牌仍在手中但其类别相同，不能拿它支付不同类别。"
+          ],
+          "source_refs": [
+            "mobile-alt-manchong",
+            "bwiki-manchong",
+            "bwiki-yuce-detail",
+            "xiaomi-manchong-2022",
+            "xiaomi-manchong-2023",
+            "mobile-manchong-comparison"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-alt-manchong.html",
+            "line": 185,
+            "rule_sha256": "8c5247137078bb98a656acacf2387074c497d3c3fee1e3507161180e0071c84e"
+          },
+          "official_panel_hidden": true,
+          "intrinsic_unresolved": [],
+          "limited_marker": null,
+          "awakening_marker": null
+        }
+      ],
+      "ui_requirements": [
+        "峻刑成本支持多张手牌，预览数量及三大类别；目标自己的二选一界面不向满宠暴露其他暗牌。",
+        "御策公开且只公开1张选定手牌；来源收到合格异类别手牌/拒绝提示。区分受到伤害、濒死救援、之后回血动画。",
+        "次数绑定实际阶段；翻回正面也应显示并广播真实翻面事件。"
+      ],
+      "rule_expansion_notes": [
+        "选择经典3HP男魏全两技能，不采用界峻刑等量弃牌加失去体力，也不采用一将之魂摸至4。",
+        "御策边界来自同产品历史界满宠指南，只因技能未改且官方社区明确比较一致而使用，非把整位界满宠规则移入。",
+        "死亡/失技发生在跨游戏嵌套成本回调时遵守H2/H3稳定事务规则；不额外获得源手游未写明的死亡触发。"
+      ],
+      "host_policy_refs": [
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "H7"
+      ]
+    },
+    {
+      "key": "jianyong",
+      "id": "sgs.adapted.base.hero.jian-yong",
+      "source_name": "简雍",
+      "suggested_display_name": "简雍",
+      "max_hp": 3,
+      "starting_hp": 3,
+      "starting_hp_direct_source_value": null,
+      "starting_hp_basis": "H0 cross-game host initialization",
+      "gender": "male",
+      "source_faction": "蜀",
+      "product": "三国杀移动版",
+      "variant": "mobile-official-catalog-whole-turn-qiaoshui-documented-2026-10-15",
+      "official_page_id": 127,
+      "source_refs": [
+        "mobile-alt-jianyong",
+        "bwiki-jianyong",
+        "9game-jianyong-2015"
+      ],
+      "intrinsic_skill_inventory": [
+        "巧说",
+        "纵适"
+      ],
+      "skill_ids": [
+        "sgs.qiaoshui",
+        "sgs.zongshi"
+      ],
+      "personal_lord_skills": [],
+      "granted_skill_inventory": [],
+      "acquired_skill_inventory": [],
+      "all_intrinsic_panels_verified": true,
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "source_inventory_ready": true,
+      "implementation_status": "research_only",
+      "readiness": "held_intrinsic_rules_unresolved",
+      "ready_for_implementation": false,
+      "intrinsic_unresolved": [
+        {
+          "id": "J2",
+          "skill": "sgs.qiaoshui",
+          "topic": "extra_target_legality_and_consumption",
+          "material": true,
+          "evidence": [
+            "mobile-alt-jianyong",
+            "bwiki-jianyong",
+            "9game-jianyong-2015"
+          ],
+          "problem": "距离已由同产品整回合历史攻略关闭；仍缺明确减至0目标、无角色目标的闪/无懈使用是否消费下一张机会，以及同回合额外阶段再次成功但旧机会未用时的组合规则。不能自行加最少1目标或按引擎便利选择消费/叠加语义。",
+          "needed_to_close": "同产品所选整回合版对0目标、闪/无懈等响应式使用和同回合多个成功窗口的精确规则；或授权当前客户端核验但须另立当前版本。"
+        }
+      ],
+      "skills": [
+        {
+          "id": "sgs.qiaoshui",
+          "name": "巧说",
+          "type": "optional_play_phase_start_pindian_next_card_target_modifier",
+          "timing": "出牌阶段开始时，错过开始窗口不能在任意动作中补发",
+          "quota": "每次真实出牌阶段开始一个机会；成功仅下一张合格牌一个修正，失败为本真实回合锦囊使用禁令。额外出牌阶段不清除本回合状态。",
+          "cost": "与一名其他角色进行合法拼点，双方秘密选择手牌、锁定后同时展示并比较有效点数",
+          "targets": "一名可合法拼点的其他角色，双方通常须有手牌；不含自己",
+          "effects": [
+            "严格点数大于才算赢；相同点数属于没赢。赢后可为下一张基本牌或普通锦囊增加或减少一个目标；装备和延时锦囊不属于成功修正的牌类。",
+            "没赢产生锦囊使用禁令，包含普通和延时锦囊；同产品FAQ明确不能使用无懈可击。不能误做只禁止主动出牌锦囊或结束出牌阶段。",
+            "同产品FAQ允许桃与无中生有增加目标，但额外桃目标必须受伤；不允许凭额外目标把回血重复放在同一人身上。",
+            "这不是直接复制一张牌，也不是赠送一次杀使用额度。具体首次合格使用消耗、无距离和目标最小数仍须J2关闭。",
+            "明确选择官网所写“本回合”；不声称与移动版Wiki“本阶段”等效。已有失败禁令持续至回合末，后续新成功效果不能消掉已生效禁令。多次成功窗口的组合在J2关闭前不开放。",
+            "同产品2015-05-20九游历史攻略明确额外目标无距离限制：双杀、双顺、双桃、双无中、双酒、三人铁索；原额定目标仍走正常用牌合法性，额外目标不因无距而绕过其他禁止。"
+          ],
+          "source_refs": [
+            "mobile-alt-jianyong",
+            "bwiki-jianyong",
+            "bwiki-qiaoshui-detail",
+            "9game-jianyong-2015"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-alt-jianyong.html",
+            "line": 184,
+            "rule_sha256": "b461205ed8d1c651b779a86cebe1a48c13f2fe2eb04d5ac05d697f650ec5090e"
+          },
+          "official_panel_hidden": false,
+          "intrinsic_unresolved": [
+            {
+              "id": "J2",
+              "skill": "sgs.qiaoshui",
+              "topic": "extra_target_legality_and_consumption",
+              "material": true,
+              "evidence": [
+                "mobile-alt-jianyong",
+                "bwiki-jianyong",
+                "9game-jianyong-2015"
+              ],
+              "problem": "距离已由同产品整回合历史攻略关闭；仍缺明确减至0目标、无角色目标的闪/无懈使用是否消费下一张机会，以及同回合额外阶段再次成功但旧机会未用时的组合规则。不能自行加最少1目标或按引擎便利选择消费/叠加语义。",
+              "needed_to_close": "同产品所选整回合版对0目标、闪/无懈等响应式使用和同回合多个成功窗口的精确规则；或授权当前客户端核验但须另立当前版本。"
+            }
+          ],
+          "limited_marker": null,
+          "awakening_marker": null
+        },
+        {
+          "id": "sgs.zongshi",
+          "name": "纵适",
+          "type": "optional_reclaim_pindian_physical_card",
+          "timing": "任何自己参与的拼点结束后，不仅自己的巧说",
+          "quota": "每次真实拼点一次机会，无回合/阶段次数上限",
+          "cost": "无额外支付；只能移动本次拼点真实实体牌",
+          "targets": "自己获得：若赢，取得两张拼点牌中点数较小的一张；没赢，取回自己的拼点牌",
+          "effects": [
+            "其他人对简雍发动天义等拼点也可触发，同产品FAQ明确支持。相同点数时属于没赢，可取回本人那张。",
+            "同产品FAQ明确可获得秦宓天辩所用的牌堆顶实体拼点牌，来源并不限于对方原手牌。",
+            "未声明任何摸牌、额外判定或从牌堆顶另取牌；这些属于界纵适，不得加入。实体若已被其他先结算效果移走不能克隆一份。",
+            "成功规则写点数较小，不可简单改为无条件拿对方牌；特别在点数修正、判胜和实体点数不同的组合下需要保持拼点事件记录。"
+          ],
+          "source_refs": [
+            "mobile-alt-jianyong",
+            "bwiki-jianyong",
+            "bwiki-zongshi-detail"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-alt-jianyong.html",
+            "line": 185,
+            "rule_sha256": "98440bcc549f034f182cddc53341b555bd7021d7f8d6d73fe03649fee24ac986"
+          },
+          "official_panel_hidden": true,
+          "intrinsic_unresolved": [],
+          "limited_marker": null,
+          "awakening_marker": null
+        }
+      ],
+      "ui_requirements": [
+        "所选官方整回合版应显示至本回合结束；另一阶段版不得混入。目标增减细则未闭合前整体留置。",
+        "拼点UI双盲选牌，纵适结果明确展示取回哪张实体；普通/延时锦囊分类可见。",
+        "最终需有下一张牌增减目标UI及禁令状态牌，不能只实现多杀。"
+      ],
+      "rule_expansion_notes": [
+        "所有官方隐藏栏已齐，3HP男蜀；无个人主公技/派生技。",
+        "留置的是固有机制而非全技能清单缺失；不能只实现纵适就计入完整英雄。",
+        "J1已由明确版本选择关闭：官方目录整回合版为本包候选，Wiki阶段版仍为另一实体候选；仍因J2留置。"
+      ],
+      "host_policy_refs": [
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "H7"
+      ],
+      "version_conflicts": [
+        {
+          "id": "J1",
+          "skill": "sgs.qiaoshui",
+          "topic": "duration_conflict",
+          "material": true,
+          "evidence": [
+            "mobile-alt-jianyong",
+            "bwiki-qiaoshui-detail",
+            "bwiki-jianyong"
+          ],
+          "problem": "官方身份目录的成功下一牌修正和失败锦囊禁令均持续本回合；移动版经典精确技能条目与英雄正文均写本阶段。涉及额外出牌阶段及阶段外无懈，不能以宿主政策选择其一。",
+          "needed_to_close": "可标定版本/生效日期的同产品官方更正、同产品规则FAQ，或授权当前客户端对额外阶段及阶段外无懈的验证。",
+          "resolution": "明确选择移动版官网目录所记整回合变体；非宣称其为当前客户端，阶段版另存待覆盖。",
+          "status": "resolved_by_explicit_historical_document_selection",
+          "selected_duration": "current_actual_turn"
+        }
+      ]
+    },
+    {
+      "key": "liru",
+      "id": "sgs.adapted.base.hero.li-ru",
+      "source_name": "李儒",
+      "suggested_display_name": "李儒",
+      "max_hp": 3,
+      "starting_hp": 3,
+      "starting_hp_direct_source_value": null,
+      "starting_hp_basis": "H0 cross-game host initialization",
+      "gender": "male",
+      "source_faction": "群",
+      "product": "三国杀移动版",
+      "variant": "mobile-identity-revised-2015-12-01-historical-has-hand-target",
+      "official_page_id": 133,
+      "source_refs": [
+        "mobile-alt-liru",
+        "bwiki-liru",
+        "mobile-2015-adjustment"
+      ],
+      "intrinsic_skill_inventory": [
+        "绝策",
+        "灭计",
+        "焚城"
+      ],
+      "skill_ids": [
+        "sgs.juece",
+        "sgs.mieji",
+        "sgs.fencheng"
+      ],
+      "personal_lord_skills": [],
+      "granted_skill_inventory": [],
+      "acquired_skill_inventory": [],
+      "all_intrinsic_panels_verified": true,
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "source_inventory_ready": true,
+      "implementation_status": "research_only",
+      "readiness": "source_ready_with_explicit_host_requirements",
+      "ready_for_implementation": true,
+      "intrinsic_unresolved": [],
+      "skills": [
+        {
+          "id": "sgs.juece",
+          "name": "绝策",
+          "type": "optional_finish_phase_empty_hand_skill_damage",
+          "timing": "自己的结束阶段开始时，已经完成正常弃牌阶段；非旧版回合内他人失去最后手牌时",
+          "quota": "每个结束阶段一个可选目标，不按空手次数重复",
+          "cost": "无牌成本",
+          "targets": "一名没有手牌的其他存活角色，不限距离或阵营",
+          "effects": [
+            "造成来自李儒的1点普通技能伤害；不是杀、不是失去体力，不提供闪响应。目标可以有装备或判定区牌，只检查手牌。",
+            "没有手牌的自己不可以选。目标本回合没失去牌也可选；有手牌但曾失去牌不可选。绝策需结束阶段实际存在。",
+            "不采用历史原版“于你的回合失去最后手牌后”时序，也不采用界版“本回合失去过牌”条件。"
+          ],
+          "source_refs": [
+            "mobile-alt-liru",
+            "bwiki-liru",
+            "bwiki-juece-detail",
+            "xiaomi-liru-variant-comparison",
+            "mobile-2015-adjustment"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-alt-liru.html",
+            "line": 188,
+            "rule_sha256": "6094849e02b1faae440e288a94aadacec4cea68e5b336f4bf1ba7655c3f5beb0"
+          },
+          "official_panel_hidden": false,
+          "intrinsic_unresolved": [],
+          "limited_marker": null,
+          "awakening_marker": null,
+          "selected_rule_primary_evidence": {
+            "source_id": "mobile-2015-adjustment",
+            "raw_path": "evidence/mobile-2015-adjustment.html",
+            "html_line": 227,
+            "column": "改动后",
+            "whole_hero_selected_text": "灭计：出牌阶段限一次，你可以将一张黑色锦囊牌置于牌堆顶并选择一名有手牌的其他角色，然后令该角色选择一项：弃置一张锦囊牌；或依次弃置两张非锦囊牌。 绝策：结束阶段开始时，你可以对没有手牌的一名其他角色造成1点伤害。 焚城：限定技，出牌阶段，你可以令所有其他角色依次选择一项：弃置至少X张牌（X为发动此技能时该角色的上家以此法弃置牌的数量+1）；或受到你对其造成的2点火焰伤害。",
+            "selected_text_sha256": "3756d428e0bbbed156a5ec04bf24a97ce00c111d992cfaab990f317a8823ee09"
+          },
+          "raw_evidence_role": "Catalog inventory evidence; selected historical rule primacy is in selected_rule_primary_evidence, not this undated catalog paragraph."
+        },
+        {
+          "id": "sgs.mieji",
+          "name": "灭计",
+          "type": "once_play_phase_black_trick_topdeck_then_forced_discard",
+          "timing": "自己的真实出牌阶段动作窗口",
+          "quota": "每出牌阶段限一次，非本回合限一次；效果后不能取回成本刷新",
+          "cost": "将自己一张黑色锦囊手牌置于全局牌堆顶；不是弃置/使用，已在判定区的锦囊不能付",
+          "targets": "一名有手牌的其他存活角色；所选2015-12-01官方历史版明确须有手牌，不能仅因有装备就合法",
+          "effects": [
+            "成本为自己真实手牌中的黑色锦囊，包含普通及延时锦囊；置入全局牌堆顶，保留实体、花色、点数。非使用/打出转换不改持有成本身份。",
+            "目标自己选择：弃置1张锦囊，或依次弃置2张非锦囊。目标支付可来自手牌及装备区，不来自判定区/私有牌堆；同产品历史指南明确装备配合。",
+            "“依次”解释为逐张选取、移动、完成该张失去/装备离场后再检查下一张。不能一次锁定2牌并同时移动，也不能让李儒看全手代选。",
+            "若第二分支只有1张可弃非锦囊，先弃该张并完成对应事件，然后重查：若此时仍无可弃非锦囊，则结束，不强迫弃锦囊；若因枭姬等新得非锦囊，则必须继续弃第2张。总计最多2张非锦囊。",
+            "恰有1非锦囊+1锦囊的目标可以选择只弃非锦囊（若第一弃后未新增非锦囊）。只有锦囊而无可弃非锦囊时不能选0张空付第二分支；须弃1张合法锦囊。所有合法牌均不能弃的特殊外来保护按H8处理。",
+            "“不足”指本分支可弃非锦囊不足，不是从现有所有牌凑2张；不可混合1锦囊+1非锦囊。上述递归是文本语义推导，非独立FAQ或当前客户端实测。",
+            "目标无手但有装备在选定版本不合法。目标选择完毕、李儒已置顶后，被嵌套效果抽空或死亡不返还成本/阶段次数；后续按H8处理。",
+            "弃锦囊不会给李儒，排除界版改交锦囊；不采用OL界版红锦囊成本/两张任意牌。"
+          ],
+          "source_refs": [
+            "mobile-alt-liru",
+            "bwiki-liru",
+            "xiaomi-liru-variant-comparison",
+            "mobile-2015-adjustment",
+            "xiaomi-liru-2022",
+            "xiaomi-liru-2023"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-alt-liru.html",
+            "line": 189,
+            "rule_sha256": "0921ddfc2389e82ddf94bdaf61c40c032b49ed25b32b882e8f52a2219262ccc8"
+          },
+          "official_panel_hidden": true,
+          "intrinsic_unresolved": [],
+          "limited_marker": null,
+          "awakening_marker": null,
+          "selected_rule_primary_evidence": {
+            "source_id": "mobile-2015-adjustment",
+            "raw_path": "evidence/mobile-2015-adjustment.html",
+            "html_line": 227,
+            "column": "改动后",
+            "whole_hero_selected_text": "灭计：出牌阶段限一次，你可以将一张黑色锦囊牌置于牌堆顶并选择一名有手牌的其他角色，然后令该角色选择一项：弃置一张锦囊牌；或依次弃置两张非锦囊牌。 绝策：结束阶段开始时，你可以对没有手牌的一名其他角色造成1点伤害。 焚城：限定技，出牌阶段，你可以令所有其他角色依次选择一项：弃置至少X张牌（X为发动此技能时该角色的上家以此法弃置牌的数量+1）；或受到你对其造成的2点火焰伤害。",
+            "selected_text_sha256": "3756d428e0bbbed156a5ec04bf24a97ce00c111d992cfaab990f317a8823ee09"
+          },
+          "raw_evidence_role": "Catalog inventory evidence; selected historical rule primacy is in selected_rule_primary_evidence, not this undated catalog paragraph."
+        },
+        {
+          "id": "sgs.fencheng",
+          "name": "焚城",
+          "type": "limited_ordered_global_discard_escalation_or_fire_damage",
+          "timing": "自己的出牌阶段",
+          "quota": "限定技，一局一次；不能因额外回合/阶段自动重置",
+          "cost": "消费一次限定标记，无手牌成本",
+          "targets": "所有其他角色依次处理，包含队友；不得只选敌人或自行选起点",
+          "effects": [
+            "所有其他存活角色按行动顺序依次选择，第一位为李儒下家，不得任意选起点或跳队友。每人可弃至少X张手牌/装备，或受来自李儒的2点火焰技能伤害。",
+            "所选2015官方文字明确X按“发动此技能时该角色的上家”本次实际弃牌数+1。开始时锁定这张上家身份映射；首位上家为李儒，本次未以焚城弃牌，故X=1。",
+            "上家以本次焚城弃N张，则X=N+1；上家未以焚城弃牌则N=0，X=1。可超额弃牌抬高后继门槛，不是恰好X；不足X张不能部分付费充数。",
+            "焚城弃牌可来自H/E，不能弃J或私有堆；每个目标选择的整批N须原子支付后记录实际N，再进行失去事件。",
+            "火伤经过统一防伤、增减伤、濒死救援、链传播。不是杀或锦囊牌，不能用闪/无懈，实际被完全防止仍未以焚城弃牌，后继N视0。",
+            "官方“发动时上家”与Wiki“上一名此技能目标”分开保存；不因后续跳过死亡人物而重新定义前者。初始上家未获执行便死亡，其弃N记录保持0；已弃N后死亡记录仍N。此为固定上家文字的直接结果。",
+            "中途来源死亡、失技、角色换座及对局终局的事务续算采用明确H8，不能声称经手游客户端证实。"
+          ],
+          "source_refs": [
+            "mobile-alt-liru",
+            "bwiki-liru",
+            "xiaomi-fencheng-reset",
+            "xiaomi-liru-variant-comparison",
+            "mobile-2015-adjustment",
+            "xiaomi-liru-2023"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-alt-liru.html",
+            "line": 190,
+            "rule_sha256": "56994270296a022b6b964bf40fed24456a32a3e17b39ef9d40b9a13ceb843461"
+          },
+          "official_panel_hidden": true,
+          "intrinsic_unresolved": [],
+          "limited_marker": "fencheng_once_per_game",
+          "awakening_marker": null,
+          "selected_rule_primary_evidence": {
+            "source_id": "mobile-2015-adjustment",
+            "raw_path": "evidence/mobile-2015-adjustment.html",
+            "html_line": 227,
+            "column": "改动后",
+            "whole_hero_selected_text": "灭计：出牌阶段限一次，你可以将一张黑色锦囊牌置于牌堆顶并选择一名有手牌的其他角色，然后令该角色选择一项：弃置一张锦囊牌；或依次弃置两张非锦囊牌。 绝策：结束阶段开始时，你可以对没有手牌的一名其他角色造成1点伤害。 焚城：限定技，出牌阶段，你可以令所有其他角色依次选择一项：弃置至少X张牌（X为发动此技能时该角色的上家以此法弃置牌的数量+1）；或受到你对其造成的2点火焰伤害。",
+            "selected_text_sha256": "3756d428e0bbbed156a5ec04bf24a97ce00c111d992cfaab990f317a8823ee09"
+          },
+          "raw_evidence_role": "Catalog inventory evidence; selected historical rule primacy is in selected_rule_primary_evidence, not this undated catalog paragraph."
+        }
+      ],
+      "ui_requirements": [
+        "绝策在真实结束阶段询问空手其他目标；UI区分普通伤害与火伤。",
+        "灭计成本置顶有明确实体牌动画，目标依次选牌不可由李儒看全手代选。",
+        "焚城显示一次性标记、固定顺序/上家、当前响应者、X、已弃N；宿主死亡续算见H8提示与审计，不能隐藏。"
+      ],
+      "rule_expansion_notes": [
+        "选择2015-12-01移动版官方调整后的完整历史李儒，3HP男群，绝策/灭计/焚城齐全。官网角色目录补述非锦囊短缺处理，同产品2022/2023指南仅补明示共享规则。",
+        "灭计目标须有手牌；不放宽为只要有装备，也不放宽为空手空装。当前目录省略、Wiki有牌的写法作为替代版本记录，未混成一个实体。",
+        "顺次弃牌是逐次执行文本；1非锦囊+1锦囊只弃非锦囊和装备离场后重检属于明确语义推导，不伪装专门FAQ。",
+        "焚城固定发动时上家/实际弃N由所选官方句法确定；中途死亡、换位、失技续算仅H8宿主兼容政策。",
+        "不采用旧版失去最后手牌绝策/额外目标灭计/1火焚城，不采用界绝策/交锦囊灭计及OL自由选起点。1V1等模式另列待做。"
+      ],
+      "host_policy_refs": [
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "H7",
+        "H8"
+      ],
+      "version_conflicts": [
+        {
+          "id": "L-TARGET-VERSION",
+          "selected": "2015-12-01官方修订版：灭计目标须有手牌",
+          "alternatives": [
+            "2026-10-16读取官网角色目录：只写一名其他角色",
+            "2025-12-20移动版Wiki经典：有牌的其他角色"
+          ],
+          "resolution": "选择有明确官方发布日期的历史变体；不拼接放宽目标条件、不宣称当前客户端。"
+        }
+      ],
+      "resolved_review_items": [
+        {
+          "id": "L1",
+          "status": "split_into_literal_source_and_disclosed_H8",
+          "source_resolution": "官方明确发动时上家。固定上家身份并记录本次实际弃N为文字的直接实现；来源死亡与异游戏中途换座的事务结算另属H8。",
+          "old_review": {
+            "id": "L1",
+            "skill": "sgs.fencheng",
+            "topic": "death_queue_and_predecessor_boundary",
+            "material": true,
+            "evidence": [
+              "mobile-alt-liru",
+              "bwiki-liru",
+              "xiaomi-fencheng-reset"
+            ],
+            "problem": "官方以发动时该角色的上家弃牌数为X依据，社区经典写上一名此技能目标。连环/反伤导致排队角色未轮到便死亡、座次变化或李儒本人中途阵亡时，未取得精确同产品队列/继续结算/来源规则，不能把简单存活列表循环当成已验证。",
+            "needed_to_close": "同产品所选焚城规则FAQ或客户端边界实证，确认初始目标队列、死亡跳过时X、本人死亡后的继续与伤害归属。"
+          }
+        },
+        {
+          "id": "L2",
+          "status": "closed_by_dated_official_version_and_literal_recurrence",
+          "source_resolution": "有手牌目标由2015官方明确；H/E弃牌由同产品历史指南明示；依次两张非锦囊及不足1张由官方角色目录补述，按每次移动后重新检查的递归语义实现。",
+          "old_review": {
+            "id": "L2",
+            "skill": "sgs.mieji",
+            "topic": "sequential_shortfall_and_zone_boundary",
+            "material": true,
+            "evidence": [
+              "mobile-alt-liru",
+              "bwiki-liru"
+            ],
+            "problem": "官方不写目标有牌，社区经典补有牌；两张非锦囊依次弃置，短缺时只弃1/全弃。普通效果可读，但尚缺同产品精确证据关闭仅装备目标、1非锦囊+1锦囊及第一次弃置触发补牌后第二次支付。其他产品对这些有不同版本FAQ，不能移植。",
+            "needed_to_close": "同产品经典灭计合法目标区域和逐次弃置FAQ，覆盖0手牌有装备、混合牌类、首次弃置后的补牌/死亡/受保护牌。"
+          }
+        }
+      ]
+    },
+    {
+      "key": "fuhuanghou",
+      "id": "sgs.adapted.base.hero.fu-huang-hou",
+      "source_name": "伏皇后",
+      "suggested_display_name": "伏皇后",
+      "max_hp": 3,
+      "starting_hp": 3,
+      "starting_hp_direct_source_value": null,
+      "starting_hp_basis": "H0 cross-game host initialization",
+      "gender": "female",
+      "source_faction": "群",
+      "product": "三国杀移动版",
+      "variant": "mobile-classic-identity-official-catalog-selection-2026-10-15",
+      "official_page_id": 132,
+      "source_refs": [
+        "mobile-raw-fuhuanghou",
+        "bwiki-fuhuanghou",
+        "mobile-2015-adjustment"
+      ],
+      "intrinsic_skill_inventory": [
+        "惴恐",
+        "求援"
+      ],
+      "skill_ids": [
+        "sgs.zhuikong",
+        "sgs.qiuyuan"
+      ],
+      "personal_lord_skills": [],
+      "granted_skill_inventory": [],
+      "acquired_skill_inventory": [],
+      "all_intrinsic_panels_verified": true,
+      "current_client_rules_verified": false,
+      "current_client_hp_verified": false,
+      "source_inventory_ready": true,
+      "implementation_status": "research_only",
+      "readiness": "held_intrinsic_rules_unresolved",
+      "ready_for_implementation": false,
+      "intrinsic_unresolved": [
+        {
+          "id": "F1",
+          "skill": "sgs.qiuyuan",
+          "topic": "target_occurrence_and_reentry",
+          "material": true,
+          "evidence": [
+            "mobile-raw-fuhuanghou",
+            "bwiki-fuhuanghou",
+            "xiaomi-fuhuanghou-boundaries",
+            "mobile-tadun-historical"
+          ],
+          "problem": "需确认已在此杀目标中的角色能否再次被求援、是否新建第二次结算、被流离后返回者的求援机会，以及求援追加目标是否重新进入成为目标时/后两个窗口。官方简述未限定“未在列表”，同产品周边攻略有重复目标线索但非精确裁定。不能凭引擎Set去重而增加原文未写限制，也不能据OL FAQ开放重复伤害。",
+          "needed_to_close": "经典移动版求援针对原目标/已转移目标/空城/享乐/流离的同版本精确FAQ或客户端测试。"
+        }
+      ],
+      "skills": [
+        {
+          "id": "sgs.zhuikong",
+          "name": "惴恐",
+          "type": "optional_wounded_other_turn_start_pindian_use_target_lock_or_distance_one",
+          "timing": "其他角色的回合开始时，自己已受伤",
+          "quota": "每个其他角色的实际回合开始一次机会；无每轮一次限制，不在自己的回合发动",
+          "cost": "与该回合角色进行合法拼点，双方秘密选牌；通常须双方有手牌",
+          "targets": "固定为当前开始回合的其他角色，包含队友，不另选任意角色",
+          "effects": [
+            "仅自己已损失体力才可发动；比较的是自己是否受伤，不是对方体力不小于自己。平点属于没赢。",
+            "赢：本回合该角色用牌不能选择其自己以外的角色为目标。自己仍可用合法自用桃/装备，不是直接跳过出牌阶段或禁止全部技能。",
+            "失去体力/弃牌/拼点等非用牌技能不自动被禁止；技能产生的真正使用牌仍须遵守该回合目标禁令。",
+            "没赢：当前回合角色到伏皇后的有向距离视为1，持续本回合。不是伏皇后到他的双向距离，也不是他到全场距离1。没有额外赠送一张杀。",
+            "不采用旧版拼赢跳出牌阶段，也不采用界版每轮一次/比较双方体力/失败拿牌并虚拟杀。额外回合独立产生回合开始机会。"
+          ],
+          "source_refs": [
+            "mobile-raw-fuhuanghou",
+            "bwiki-fuhuanghou"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-raw-fuhuanghou.html",
+            "line": 184,
+            "rule_sha256": "4677b5f0768e62795f6d42f6400ef9417e2085a631ef0e5507c3c4151fbc8800"
+          },
+          "official_panel_hidden": false,
+          "intrinsic_unresolved": [],
+          "limited_marker": null,
+          "awakening_marker": null
+        },
+        {
+          "id": "sgs.qiuyuan",
+          "name": "求援",
+          "type": "optional_slash_target_request_dodge_or_add_target",
+          "timing": "自己成为一张杀的目标时；每次具体目标事件",
+          "quota": "无每回合次数上限；同一杀重复事件边界F1未闭合",
+          "cost": "自己无牌成本；受求援者可交给自己一张闪，否则加入此杀的目标",
+          "targets": "另一名其他角色，排除伏皇后本人和此杀使用者；不要求有手牌；是否原已有目标F1未定",
+          "effects": [
+            "交给的闪进入伏皇后手中，不等于直接响应/打出闪。伏皇后仍需在后续正常响应窗口决定是否使用；收到闪本身不自动取消杀。",
+            "受求援者可以拒绝，即使有闪；无闪不能凭空生成。经典版本不能交任何非闪手牌替代，不包含界版其他非杀基本牌。",
+            "不交闪时是“也成为”此同一杀的目标，伏皇后仍为目标，原使用者/牌身份/属性和单次杀的既有加伤保持；不是转移杀、不是伏皇后发动新杀或造成独立技能伤害。",
+            "普通/火/雷杀、合法转化/虚拟杀均属于杀；群体万箭并非杀，不因需要闪响应而触发求援。",
+            "目标距离、其他合法性、已有目标重复与触发窗口仍须F1关闭；交牌身份依H1，不能套用仅在使用/打出时生效的转换；不得添加“只可敌人”“每杀只能问一次”“不能问已有目标”等无证限制。"
+          ],
+          "source_refs": [
+            "mobile-raw-fuhuanghou",
+            "bwiki-fuhuanghou",
+            "mobile-2015-adjustment"
+          ],
+          "raw_evidence": {
+            "path": "evidence/mobile-raw-fuhuanghou.html",
+            "line": 185,
+            "rule_sha256": "7d385784699fc638fa560c82a0704732190be5680279251927c45f0ae0761ea8"
+          },
+          "official_panel_hidden": true,
+          "intrinsic_unresolved": [
+            {
+              "id": "F1",
+              "skill": "sgs.qiuyuan",
+              "topic": "target_occurrence_and_reentry",
+              "material": true,
+              "evidence": [
+                "mobile-raw-fuhuanghou",
+                "bwiki-fuhuanghou",
+                "xiaomi-fuhuanghou-boundaries",
+                "mobile-tadun-historical"
+              ],
+              "problem": "需确认已在此杀目标中的角色能否再次被求援、是否新建第二次结算、被流离后返回者的求援机会，以及求援追加目标是否重新进入成为目标时/后两个窗口。官方简述未限定“未在列表”，同产品周边攻略有重复目标线索但非精确裁定。不能凭引擎Set去重而增加原文未写限制，也不能据OL FAQ开放重复伤害。",
+              "needed_to_close": "经典移动版求援针对原目标/已转移目标/空城/享乐/流离的同版本精确FAQ或客户端测试。"
+            }
+          ],
+          "limited_marker": null,
+          "awakening_marker": null
+        }
+      ],
+      "ui_requirements": [
+        "惴恐拼点结果展示本回合有向距离/用牌目标限制，禁止把牌选择禁令画成跳阶段。",
+        "求援二选一归被求援者，交闪是给牌而非响应；后续伏皇后仍有响应UI。",
+        "需以杀事件ID及目标发生次数显示追加与重复，不能仅用玩家ID集合掩盖F1。"
+      ],
+      "rule_expansion_notes": [
+        "经典3HP女群两技能；无个人主公技/授予/觉醒技能。",
+        "界伏皇后攻略只作核对线索，不能将界惴恐每轮额度或界求援给牌范围移入。",
+        "本次有向距离与普通用牌禁止清楚，求援仍有完整性缺口；不能删掉求援后作为完整英雄开放。",
+        "2015-12-01移动版官方调整明确不能求援此杀使用者，故排除并非自行新增限制。"
+      ],
+      "host_policy_refs": [
+        "H0",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "H7"
+      ]
+    }
+  ]
+}
