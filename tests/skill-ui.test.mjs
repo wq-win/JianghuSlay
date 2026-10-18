@@ -267,7 +267,7 @@ test('skill details work by click/touch-equivalent and Escape, persist through n
     assert.equal(details.open, false); assert.equal(app.doc.activeElement, summary);
     summary.click(); await showFixture(app, dtoFor(f), 'confirm', { message: '是否打出闪响应？' });
     assert.equal(app.doc.querySelector('[data-skill-id="nudi-heal"]').open, true);
-    const opponent = app.doc.querySelector('.opponent-skill-inspector'); opponent.querySelector('summary').click();
+    const opponent = app.doc.querySelector('.opponent-panel > .table-inspector'); opponent.querySelector('summary').click();
     const optional = opponent.querySelector('[data-skill-id="zhensha"]'); optional.querySelector('summary').click();
     assert.equal(optional.open, true); assert.match(optional.textContent, /可选触发/);
     optional.dispatchEvent(new app.dom.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
