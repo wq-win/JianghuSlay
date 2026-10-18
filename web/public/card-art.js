@@ -326,7 +326,7 @@ export function EquipmentSlot({ card, slot, label, equipmentState = null, zhangf
     data-equipment-slot=${slot}
     data-equipment-remaining=${card?.name === "护心镜" ? equipmentState?.remaining : undefined}
     onClick=${(event) => event.stopPropagation()}
-    onKeyDown=${(event) => { if (event.key === "Escape") { event.preventDefault(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}
+    onKeyDown=${(event) => { if (event.key === "Escape") { event.stopPropagation(); event.preventDefault(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}
   >
     <summary className="equipment-slot__summary" aria-label=${accessibleLabel} title=${`${card?.name || slotLabel} · ${stat}\n${description}`}>
       <span className="equipment-slot__art">
@@ -340,6 +340,7 @@ export function EquipmentSlot({ card, slot, label, equipmentState = null, zhangf
       <span className="equipment-slot__info" aria-hidden="true">i</span>
     </summary>
     <div className="equipment-slot__details">
+      <button type="button" className="btn equipment-detail-close" onClick=${event => { const details = event.currentTarget.closest("details.equipment-slot"); details.open = false; details.querySelector("summary")?.focus(); }}>关闭装备详情</button>
       <strong>${card?.name || `${slotLabel} · 未装备`}</strong>
       <span>${stat}</span>
       <p>${description}</p>
@@ -357,7 +358,7 @@ export function EquipmentSlot({ card, slot, label, equipmentState = null, zhangf
       ${sourceRecords.length > 1 ? html`<section className="equipment-source-records" aria-label="合并装备的原始来源"><b>${card?.permanent_identity?'原实体来源谱系':'合并来源'}</b><ul>${sourceRecords.map((record, index) => html`<li key=${record.id || index}><strong>${record.source_original_name || record.name}</strong><span>${sourceText(record.source_game)} · ${sourceText(record.source_version || record.source_variant)}</span>${record.source_urls?.[0] ? html`<a href=${record.source_urls[0]} target="_blank" rel="noopener noreferrer">查看原始规则</a>` : null}</li>`)}</ul></section>` : null}
       ${card?.adaptation_notes ? html`<p className="equipment-adaptation">${Array.isArray(card.adaptation_notes) ? card.adaptation_notes.join('；') : card.adaptation_notes}</p>` : null}
       ${card?.source_urls?.length ? html`<span className="equipment-source-links">${card.source_urls.map((url, index) => html`<a key=${url} href=${url} target="_blank" rel="noopener noreferrer">规则资料 ${index + 1}</a>`)}</span>` : null}
-      <small>再次点击槽位可收起</small>
+      <small>再次点击槽位或按 Escape 也可收起</small>
     </div>
   </details>`;
 }
