@@ -368,3 +368,31 @@ test('storage failure is visible, keeps play available, and confirms leaving uns
     assert.deepEqual(app.errors, []);
   } finally { app.dom.window.close(); }
 });
+
+test('game instructions are available from the game without starting or replacing a match', async () => {
+  const app = mount(production);
+  try {
+    await until(() => app.buttons('玩法说明').length);
+    assert.equal(app.dom.window.localStorage.getItem('jh_browser_save_v2'), null);
+    app.click('玩法说明');
+    await until(() => app.document.querySelector('.help-dialog'));
+    const link = app.document.querySelector('.help-dialog a');
+    assert.equal(link.href, 'https://example.test/game/jianghu-slay.html');
+    assert.match(link.textContent, /游戏介绍与存档说明/);
+    assert.equal(app.dom.window.localStorage.getItem('jh_browser_save_v2'), null);
+    app.click('知道了');
+    await until(() => !app.document.querySelector('.help-dialog'));
+    assert.ok(app.buttons('开始对局').length);
+    app.click('开始对局');
+    await until(() => app.document.querySelector('.action-dock'));
+    const saved = app.dom.window.localStorage.getItem('jh_browser_save_v2');
+    app.click('说明');
+    await until(() => app.document.querySelector('.help-dialog'));
+    assert.equal(app.dom.window.localStorage.getItem('jh_browser_save_v2'), saved);
+    app.click('知道了');
+    await until(() => !app.document.querySelector('.help-dialog'));
+    assert.ok(app.document.querySelector('.action-dock'));
+    assert.equal(app.dom.window.localStorage.getItem('jh_browser_save_v2'), saved);
+    assert.equal(app.errors.length, 0);
+  } finally { app.dom.window.close(); }
+});

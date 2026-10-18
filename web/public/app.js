@@ -1478,6 +1478,7 @@ function App() {
       </ol>
       <p>本版提供英雄杀、三国杀的普通角色与常规牌堆，也保留现有原创江湖角色。具体技能和跨作兼容规则以角色说明为准。</p>
       <p>规则、人机与进度都在当前浏览器中运行。每步自动保存，只保留一份存档；刷新后点「继续上局」。清理网站数据会丢失存档。</p>
+      <p><a className="text-button" href=${/\/game\/jianghu-slay\/(?:index\.html)?$/.test(window.location.pathname) ? "../jianghu-slay.html" : "https://wq-win.github.io/game/jianghu-slay.html"}>游戏介绍与存档说明 →</a></p>
       <button type="button" className="btn primary" autoFocus onClick=${() => setHelpOpen(false)}>知道了</button>
     </div>
   </div>` : null;
@@ -1543,6 +1544,7 @@ function App() {
         <span className="phase-chip" role="status">${phaseLabel}</span>
       </div>
       <div className="chrome-right">
+        <button type="button" className="btn ghost" onClick=${() => setHelpOpen(true)}>说明</button>
         <button type="button" className="btn ghost" aria-expanded=${logOpen} onClick=${() => setLogOpen((v) => !v)}>${logOpen ? "收起战报" : "战报"}</button>
         <button type="button" className="btn ghost" disabled=${busy} onClick=${restart}>重新开局</button>
         <button type="button" className="btn ghost" disabled=${busy} title="返回配置页，保留原存档" onClick=${() => goHome()}>更换英雄/模式</button>
