@@ -120,3 +120,20 @@ test('single-screen styles define bounded tabletop bands, internal scrolling and
   const html=await readFile(resolve(root,'dist/index.html'),'utf8');
   for(const file of ['styles.css','card-art.css','layout.css'])assert.ok(html.includes(`./${file}`));
 });
+
+test('parchment response dialogs use explicit high-contrast ink and status palettes', async () => {
+  const css = await readFile(resolve(root, 'web/public/layout.css'), 'utf8');
+  const style = selector => css.slice(css.lastIndexOf(selector + ' {')).split('}')[0];
+  assert.match(style('.sgs-dialog'), /color:#30271c/);
+  assert.match(style('.sgs-dialog .response-context'), /color:#30271c; background:#eadbb8/);
+  assert.match(style('.sgs-dialog .response-context strong'), /color:#543715/);
+  assert.match(css, /\.sgs-dialog \.response-context small,[\s\S]*?color:#485044/);
+  const luminance = hex => {
+    const rgb = hex.match(/../g).map(h => parseInt(h,16)/255).map(v => v <= .04045 ? v/12.92 : ((v+.055)/1.055)**2.4);
+    return rgb[0]*.2126 + rgb[1]*.7152 + rgb[2]*.0722;
+  };
+  for (const [ink,paper] of [['30271c','ddc89a'],['543715','eadbb8'],['485044','eadbb8'],['203e32','cedbc2'],['63351e','eed0aa'],['692e21','efd4bf']]) {
+    const ratio=(luminance(paper)+.05)/(luminance(ink)+.05);
+    assert.ok(ratio>=4.5, `${ink} on ${paper}: ${ratio.toFixed(2)}:1`);
+  }
+});
