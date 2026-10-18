@@ -36,7 +36,8 @@ test('all 20 equipment names render object slots and readable stats with keyboar
     const slot=slots[card.type], markup=renderToStaticMarkup(createElement(EquipmentSlot,{card,slot}));
     const doc=new JSDOM(markup).window.document;
     assert.equal(doc.querySelectorAll('details > summary').length,1);
-    assert.equal(doc.querySelectorAll('button, .sgs-card').length,0);
+    assert.equal(doc.querySelectorAll('.sgs-card').length,0);
+    assert.equal(doc.querySelectorAll('button.equipment-detail-close').length,1);
     assert.equal(doc.querySelector('.equipment-slot__name').textContent,card.name);
     assert.equal(doc.querySelector('.equipment-slot__stat').textContent,equipmentStat(card,slot));
     assert.equal(doc.querySelector('.equipment-slot__art svg').getAttribute('data-art-name'),card.name);
@@ -81,18 +82,41 @@ test('complete 1v2 React table retains all four slots, all 145 illustrated hand 
     const horse=doc.querySelector('.self-panel [data-equipment-slot="defensive_horse"]');
     horse.querySelector('summary').click();assert.equal(horse.open,true);
     horse.querySelector('summary').click();assert.equal(horse.open,false);
+    horse.querySelector('summary').click();
+    horse.querySelector('.equipment-detail-close').click();assert.equal(horse.open,false);
+    assert.equal(doc.activeElement,horse.querySelector('summary'));
+    const rules=doc.querySelector('.self-panel > .table-inspector');
+    rules.querySelector('summary').click();assert.equal(rules.open,true);
+    rules.querySelector('.table-inspector-content > header button').click();assert.equal(rules.open,false);
+    assert.equal(doc.activeElement,rules.querySelector('summary'));
+    assert.equal(doc.querySelector('.player-row > .player-controls .action-dock') !== null,true);
+
     assert.equal(match.responses.length,responses);assert.equal(dom.window.localStorage.getItem('jh_browser_save_v2'),before);
+    state.active_skills=[];state.players.self.marks.shixian=false;state.players.self.equipment.weapon=null;
+    match.show('play_card',{},state);await until(()=>doc.querySelector('.dock-main--hand-only'));
+    assert.equal(doc.querySelector('.skill-rail'),null,'a genuinely empty skill rail is not rendered');
+    assert.equal(doc.querySelectorAll('.dock-main--hand-only .sgs-card').length,145);
+    state.active_skills=[{id:'霸王',label:'霸王',hotkey:'q',arg_mode:'none'}];
+    match.show('play_card',{},state);await until(()=>doc.querySelector('.skill-rail .active-skill-control'));
+    assert.equal(doc.querySelector('.dock-main--hand-only'),null,'active skills retain their rail');
+    state.active_skills=[];state.players.self.equipment.weapon={name:'丈八蛇矛',trait:'two_as_sha'};
+    match.show('play_card',{},state);await until(()=>[...doc.querySelectorAll('.skill-rail button')].some(button=>button.textContent.trim()==='丈八'));
+    assert.equal(doc.querySelector('.dock-main--hand-only'),null,'equipment conversion retains its control');
     assert.deepEqual(errors,[]);
   }finally{dom.window.close();}
 });
 
-test('static styles declare responsive normal-flow panels and local assets (not a geometry test)',async()=>{
+test('single-screen styles define bounded tabletop bands, internal scrolling and safe details',async()=>{
   const css=await readFile(resolve(root,'web/public/layout.css'),'utf8');
-  assert.match(css,/grid-template-columns:\s*20rem minmax\(0, 1fr\)/);
-  assert.match(css,/@media \(max-width: 640px\)/);
-  assert.match(css,/grid-template-columns:\s*minmax\(0, 1fr\)/);
-  assert.match(css,/\.sgs-table\s*\{[^}]*height:\s*auto/s);
-  assert.match(css,/\.sgs-table\s*\{[^}]*overflow:\s*visible/s);
+  assert.match(css,/height:100dvh/);
+  assert.match(css,/\.sgs-table \.dock-main\.dock-main--hand-only \{ grid-template-columns:minmax\(0,1fr\)/);
+  assert.match(css,/grid-template-rows:180px minmax\(70px,1fr\) minmax\(240px,38%\)/);
+  assert.match(css,/\.player-row[^}]*grid-template-columns:300px minmax\(0,1fr\)/);
+  assert.match(css,/@media \(max-width:640px\)/);
+  assert.match(css,/@media \(max-height:500px\) and \(min-width:641px\)/);
+  assert.match(css,/\.sgs-table \.hand-stage[^}]*overflow:auto/);
+  assert.match(css,/\.table-inspector-content,\.battle-board \.equipment-slot__details[^}]*position:fixed[^}]*max-height:70dvh[^}]*overflow:auto/);
+  assert.match(css,/\.sgs-table \.modal-mask \{ z-index:40/);
   const html=await readFile(resolve(root,'dist/index.html'),'utf8');
   for(const file of ['styles.css','card-art.css','layout.css'])assert.ok(html.includes(`./${file}`));
 });

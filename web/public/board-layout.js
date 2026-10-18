@@ -2,7 +2,7 @@ import { html } from "htm/react";
 import { heroDisplayName } from "./display-names.js";
 
 /** The battle board only arranges state; all card/skill actions stay in the dock. */
-export function BattleBoard({ state, self, opponents = [], phaseLabel, ended, won, hasSaved, flash, GeneralSeat, CardView, HeroSkills, prompt, busy }) {
+export function BattleBoard({ state, self, opponents = [], phaseLabel, ended, won, hasSaved, flash, GeneralSeat, CardView, HeroSkills, prompt, busy, children }) {
   if (!self) {
     return html`<section className="battle-board board-loading" aria-label="对局区域">
       <div className="waiting" role="status">正在摆好牌桌…</div>
@@ -16,14 +16,6 @@ export function BattleBoard({ state, self, opponents = [], phaseLabel, ended, wo
   const recentCards = Array.isArray(state.recent_cards) ? state.recent_cards.slice(-3).reverse() : [];
 
   return html`<section className=${`battle-board ${opponents.length > 1 ? "battle-board-1v2" : ""}`} aria-label="对局区域">
-    <aside className="self-panel" aria-labelledby="self-panel-title">
-      <header className="board-panel-heading">
-        <h2 id="self-panel-title">我方状态</h2>
-        <span>手牌 ${self.hand_count ?? self.hand?.length ?? 0}</span>
-      </header>
-      <${GeneralSeat} player=${self} side="self" state=${state} />
-      ${HeroSkills ? html`<${HeroSkills} hero=${self.hero} player=${self} state=${state} prompt=${prompt} busy=${busy} self=${true} />` : null}
-    </aside>
 
     <section className="battle-arena" aria-label="对手与出牌区">
       <div className="opponent-row" aria-label="对手状态">
@@ -37,7 +29,7 @@ export function BattleBoard({ state, self, opponents = [], phaseLabel, ended, wo
             <span>${opponent.alive ? "人机" : "已退场"}</span>
           </header>
           <${GeneralSeat} player=${opponent} side="opponent" damaged=${flash === "damage"} state=${state} />
-          ${HeroSkills ? html`<${HeroSkills} hero=${opponent.hero} player=${opponent} compact=${true} />` : null}
+          ${HeroSkills ? html`<${TableInspector} label="查看技能"><${HeroSkills} hero=${opponent.hero} player=${opponent} /></${TableInspector}>` : null}
         </section>`)}
       </div>
 
@@ -62,5 +54,30 @@ export function BattleBoard({ state, self, opponents = [], phaseLabel, ended, wo
         <p className="play-area-hint">${ended ? "可在下方重新开局或更换英雄" : "在下方选择手牌、发动技能或结束出牌"}</p>
       </section>
     </section>
+    <section className="player-row" aria-label="我的状态、手牌与操作">
+    <aside className="self-panel" aria-labelledby="self-panel-title">
+      <header className="board-panel-heading">
+        <h2 id="self-panel-title">我方状态</h2>
+        <span>手牌 ${self.hand_count ?? self.hand?.length ?? 0}</span>
+      </header>
+      <${GeneralSeat} player=${self} side="self" state=${state} />
+      ${HeroSkills ? html`<${TableInspector} label="技能与规则"><${HeroSkills} hero=${self.hero} player=${self} state=${state} prompt=${prompt} busy=${busy} self=${true} /></${TableInspector}>` : null}
+    </aside>
+
+      <div className="player-controls">${children}</div>
+    </section>
   </section>`;
+}
+
+/** Bounded, keyboard-dismissable rules panel. It never alters match state. */
+export function TableInspector({ label, children }) {
+  return html`<details className="table-inspector" onKeyDown=${event => {
+    if (event.key === "Escape") { event.stopPropagation(); event.preventDefault(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); }
+  }}>
+    <summary>${label}</summary>
+    <div className="table-inspector-content" role="region" aria-label=${label}>
+      <header><strong>${label}</strong><button type="button" className="btn" onClick=${event => { const details = event.currentTarget.closest("details.table-inspector"); details.open = false; details.querySelector("summary")?.focus(); }}>关闭</button></header>
+      ${children}
+    </div>
+  </details>`;
 }

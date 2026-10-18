@@ -23,7 +23,7 @@ import { LocalMatch, SAVE_KEY } from "../local/session.js";
 import { YOUJIAN_EQUIPMENT_PACK_ID } from "../local/content-packs.js";
 import { JIANGHU_DECK_SIZE } from "../local/models.js";
 import { CardArt, EquipmentSlot } from "./card-art.js";
-import { BattleBoard } from "./board-layout.js";
+import { BattleBoard, TableInspector } from "./board-layout.js";
 import { CardResponseDialog, PlayerCardStatus, ResponseContext as SharedResponseContext, LiuyeRecord } from "./card-response-ui.js";
 import { heroDisplayName, heroIdentityKey, findHeroByIdentity, heroMatchesQuery, heroMatchesSource } from "./display-names.js";
 import { HeroSkills, ActiveSkillButton, skillAvailability, isSelfSeat, GuardStatus, GuardResponseContext, GUARD_PROMPT_STAGES, XiadanStatus, SeatOrderStatus, SeventhResponseContext, SEVENTH_PROMPT_STAGES, isSeventhPrompt, PindianReveal, HeroProvenance, HeroFormStatus, playerEffectiveHero, playerFormDisplayName, EighthResponseContext, isEighthPrompt, YizhuangFormChoices, JianxiongStatus, JianxiongConvertedCards, NinthResponseContext, isNinthPrompt, JianxiongMaterialChoices, SgsBaseNextResponseContext, isSgsBaseNextPrompt, SgsFollowingResponseContext, isSgsFollowingPrompt, isSgsFollowingPromptOwner, SgsWindResponseContext, isSgsWindPrompt, isSgsWindPromptOwner, PlayerFaceOrientation, SgsNextIdentityResponseContext, isSgsNextIdentityPrompt, isSgsNextIdentityPromptOwner, SgsHongyanStatus, WangyunStatus, WangyunResponseContext, WangyunPromptOptions, isWangyunPrompt, isWangyunPromptOwner } from "./skill-ui.js";
@@ -257,6 +257,7 @@ function GeneralSeat({ player, side, damaged, state = null }) {
       <div className="seat-meta">
         <div className="seat-nick">${player.name}${Number.isInteger(player.seat_position)?html`<small data-seat-position=${player.seat_position}> · 座次 ${player.seat_position}</small>`:null}</div>
         <div className="hp-text">${player.hp}/${player.max_hp}</div>
+        ${side === "opponent" ? html`<span className="seat-hand-count">手牌 ${player.hand_count}</span>` : null}
         <div className="skill-tag">${playerEffectiveHero(player)?.skill_name}</div>
         <div className="mark-row">
           ${player.marks.leidian ? html`<span className="chip">雷</span>` : null}
@@ -275,6 +276,7 @@ function GeneralSeat({ player, side, damaged, state = null }) {
         </div>
       </div>
     </div>
+    <${TableInspector} label="状态详情">
     <${HeroFormStatus} player=${player} />
     <${JianxiongStatus} player=${player} />
     <${JianxiongConvertedCards} player=${player} />
@@ -302,6 +304,7 @@ function GeneralSeat({ player, side, damaged, state = null }) {
     <${GuardStatus} player=${player} />
     <${XiadanStatus} player=${player} />
     <${LiuyeRecord} player=${player} />
+    </${TableInspector}>
     ${side === "opponent"
       ? html`<div className="opp-hands">
           ${Array.from({ length: Math.min(player.hand_count, 10) }).map(
@@ -392,6 +395,7 @@ function PlayPhaseBar({
   const skills = (state.active_skills || []).map(normalizeSkill);
   const shixian = !!state.players.self.marks.shixian;
   const eq = state.players.self.equipment;
+  const hasSkillControls = skills.length > 0 || shixian || eq.weapon?.trait === "two_as_sha" || String(eq.weapon?.name || "").includes("丈八");
 
   const filter = activeSkill?.card_filter || "any";
   const needMin = activeSkill?.min_cards || 1;
@@ -476,7 +480,7 @@ function PlayPhaseBar({
   if (prompt.kind === "discard") {
     return html`<div className="action-dock">
       <div className="dock-tip">${prompt.message || "弃牌：点选一张手牌"}</div>
-      <div className="hand-stage">
+      <div className="hand-stage" tabIndex="0" aria-label="手牌，左右滑动查看更多">
         ${hand.map(
           (card, index) =>
             html`<${CardView}
@@ -501,7 +505,7 @@ function PlayPhaseBar({
           ? `${eq.weapon?.name || "丈八蛇矛"}：选择两张手牌当杀（${picked.length}/2）`
           : mode === "eq"
             ? "诗仙：点击装备当杀"
-            : "出牌阶段：点击手牌出牌；左侧发动技能"}
+            : `出牌阶段：点击手牌 · 左右滑动看牌${hasSkillControls ? " · 左侧发动技能" : ""}`}
     </div>
 
     ${mode === "eq"
@@ -530,15 +534,8 @@ function PlayPhaseBar({
         </div>`
       : null}
 
-    <${EquipmentActions} state=${state} prompt=${prompt} onActivate=${action => { setMode("play"); setActiveSkill(null); setPicked([]); onRespond(action.command); }} />
-
-    <${GiftActions} state=${state} prompt=${prompt} busy=${busy} selecting=${mode !== "play"} onRespond=${onRespond} />
-
-    <${YoujianHandRules} cards=${hand} />
-    <${OrdinaryWineRules} player=${state.players.self} />
-
-    <div className="dock-main">
-      <aside className="skill-rail">
+    <div className=${`dock-main ${hasSkillControls ? "" : "dock-main--hand-only"}`}>
+      ${hasSkillControls ? html`<aside className="skill-rail">
         <div className="skill-rail-title">技能</div>
         ${skills.map(s => html`<${ActiveSkillButton}
           key=${s.id} skill=${s} hero=${playerEffectiveHero(state.players.self)} availability=${skillAvailability(s, state, prompt)}
@@ -559,9 +556,9 @@ function PlayPhaseBar({
               ${eq.weapon?.name === "芦叶枪" ? "芦叶" : "丈八"}
             </button>`
           : null}
-      </aside>
+      </aside>` : null}
 
-      <div className="hand-stage">
+      <div className="hand-stage" tabIndex="0" aria-label="手牌，左右滑动查看更多">
         ${hand.map((card, index) => {
           const allowed = mode !== "skill" || cardMatchesFilter(card, filter);
           const wineBlocked = mode === "play" && !canUseOffensiveWineCard(card,state.players.self);
@@ -587,6 +584,16 @@ function PlayPhaseBar({
     </div>
 
     <div className="dock-actions">
+      <${TableInspector} label=${`装备与牌规${(skillAvailability(null, state, prompt, busy).available && (state.equipment_actions?.some(action => action.available) || (mode === "play" && state.gift_actions?.some(action => action.available && action.targets?.length)))) ? " · 可发动/赠予" : ""}`}>
+    <${EquipmentActions} state=${state} prompt=${prompt} onActivate=${action => { setMode("play"); setActiveSkill(null); setPicked([]); onRespond(action.command); }} />
+
+    <${GiftActions} state=${state} prompt=${prompt} busy=${busy} selecting=${mode !== "play"} onRespond=${onRespond} />
+
+    <${YoujianHandRules} cards=${hand} />
+    <${OrdinaryWineRules} player=${state.players.self} />
+
+      </${TableInspector}>
+
       ${mode === "skill"
         ? html`
             ${activeSkill?.arg_mode === "cards_or_all"
@@ -1544,7 +1551,7 @@ function App() {
 
     <${SeatOrderStatus} state=${state} />
     <${BattleBoard} state=${state} self=${self} opponents=${[...opponents].sort((a,b)=>(a.seat_position??0)-(b.seat_position??0))} phaseLabel=${phaseLabel}
-      ended=${ended} won=${won} hasSaved=${hasSaved} flash=${flash} GeneralSeat=${GeneralSeat} CardView=${CardView} HeroSkills=${HeroSkillsWithEquipment} prompt=${prompt} busy=${busy} />
+      ended=${ended} won=${won} hasSaved=${hasSaved} flash=${flash} GeneralSeat=${GeneralSeat} CardView=${CardView} HeroSkills=${HeroSkillsWithEquipment} prompt=${prompt} busy=${busy}>
 
     ${ended ? html`<section className="end-dock" aria-label="对局结果">
       <strong>${won ? "恭喜少侠，赢得此局！" : "此局惜败，再战江湖。"}</strong>
@@ -1553,6 +1560,8 @@ function App() {
     </section>` : self && prompt ? html`<fieldset className="prompt-controls" disabled=${busy} aria-busy=${busy}>
       <${PromptLayer} key=${prompt.prompt_id} state=${state} prompt=${prompt} busy=${busy} onRespond=${(value) => respond(value, prompt.prompt_id)} />
     </fieldset>` : html`<div className="thinking-dock" role="status">${busy ? "正在结算…" : "对手正在行动…"}</div>`}
+
+    </${BattleBoard}>
 
     ${logOpen ? html`<aside className="log-rail open" aria-label="对局战报">
       <div className="log-head">战报 <button type="button" className="text-button" onClick=${() => setLogOpen(false)}>关闭</button></div>
