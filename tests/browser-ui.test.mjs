@@ -396,3 +396,34 @@ test('game instructions are available from the game without starting or replacin
     assert.equal(app.errors.length, 0);
   } finally { app.dom.window.close(); }
 });
+
+test('menu dialogs contain focus, Escape only closes the menu, and preserve the saved match', async () => {
+  const app = mount(production);
+  const key = (name, shiftKey = false) => app.document.activeElement.dispatchEvent(new app.dom.window.KeyboardEvent('keydown', {key:name, shiftKey, bubbles:true, cancelable:true}));
+  try {
+    await until(() => app.buttons('玩法说明').length);
+    const opener = app.buttons('玩法说明')[0];
+    opener.focus(); opener.click();
+    await until(() => app.document.activeElement.textContent === '知道了');
+    key('Tab');
+    assert.equal(app.document.activeElement.tagName, 'A');
+    key('Tab', true);
+    assert.equal(app.document.activeElement.textContent, '知道了');
+    key('Escape');
+    await until(() => !app.document.querySelector('.help-dialog'));
+    assert.equal(app.document.activeElement, opener);
+    app.click('开始对局');
+    await until(() => app.document.querySelector('.action-dock'));
+    const saved = app.dom.window.localStorage.getItem('jh_browser_save_v2');
+    const restart = app.buttons('重新开局')[0];
+    restart.focus(); restart.click();
+    await until(() => app.document.activeElement.textContent === '取消');
+    assert.equal(app.document.querySelector('.table-chrome').inert, true);
+    key('Escape');
+    await until(() => !app.document.querySelector('.menu-mask'));
+    assert.equal(app.document.activeElement, restart);
+    assert.notEqual(app.document.querySelector('.table-chrome').inert, true);
+    assert.equal(app.dom.window.localStorage.getItem('jh_browser_save_v2'), saved);
+    assert.deepEqual(app.errors, []);
+  } finally { app.dom.window.close(); }
+});

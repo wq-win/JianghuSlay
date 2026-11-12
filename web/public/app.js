@@ -1365,6 +1365,43 @@ function App() {
   const [logOpen, setLogOpen] = useState(false);
   const [confirm, setConfirm] = useState(null);
   const [helpOpen, setHelpOpen] = useState(false);
+  // Menu overlays must not leak keyboard input to the active battle prompt.
+  useEffect(() => {
+    if (!helpOpen && !confirm) return;
+    const masks = [...document.querySelectorAll('.menu-mask')];
+    const mask = masks.at(-1);
+    const dialog = mask?.querySelector('[role="dialog"]');
+    if (!dialog) return;
+    const previous = document.activeElement;
+    const items = () => [...dialog.querySelectorAll('button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), [tabindex="0"]')];
+    const background = [...mask.parentElement.children].filter(node => node !== mask);
+    const inertBefore = background.map(node => node.inert);
+    background.forEach(node => { node.inert = true; });
+    const focusDefault = () => (dialog.querySelector('[data-menu-dismiss]') || items()[0])?.focus();
+    focusDefault();
+    const focusin = event => { if (!dialog.contains(event.target)) focusDefault(); };
+    const keydown = event => {
+      if (event.key === 'Escape') {
+        event.preventDefault(); event.stopImmediatePropagation();
+        if (helpOpen) setHelpOpen(false); else setConfirm(null);
+      } else if (event.key === 'Tab') {
+        event.stopImmediatePropagation();
+        const list = items(), index = list.indexOf(document.activeElement);
+        if (!list.length) { event.preventDefault(); return; }
+        if (event.shiftKey && index <= 0) { event.preventDefault(); list.at(-1).focus(); }
+        else if (!event.shiftKey && (index < 0 || index === list.length - 1)) { event.preventDefault(); list[0].focus(); }
+      }
+    };
+    document.addEventListener('keydown', keydown, true);
+    document.addEventListener('focusin', focusin);
+    return () => {
+      document.removeEventListener('keydown', keydown, true);
+      document.removeEventListener('focusin', focusin);
+      background.forEach((node, index) => { node.inert = inertBefore[index]; });
+      if (previous?.isConnected) previous.focus();
+    };
+  }, [helpOpen, Boolean(confirm)]);
+
   const launchRef = useRef(false);
   const match = useLocalMatch();
   const { state, prompt, logs, session, flash, error, setError, busy, hasSaved, launch, respond, leave, clearSave } = match;
@@ -1457,7 +1494,7 @@ function App() {
           else if (confirm.kind === "clear") { clearSave(); setConfirm(null); }
           else start(confirm.options);
         }}>${confirm.kind === "leave" ? "仍然离开" : confirm.kind === "clear" ? "确认清除" : confirm.kind === "restart" ? "确认重新开局" : "覆盖存档并开始"}</button>
-        <button type="button" className="btn" autoFocus onClick=${() => setConfirm(null)}>取消</button>
+        <button type="button" className="btn" data-menu-dismiss onClick=${() => setConfirm(null)}>取消</button>
       </div>
     </div>
   </div>` : null;
@@ -1479,7 +1516,7 @@ function App() {
       <p>本版提供英雄杀、三国杀的普通角色与常规牌堆，也保留现有原创江湖角色。具体技能和跨作兼容规则以角色说明为准。</p>
       <p>规则、人机与进度都在当前浏览器中运行。每步自动保存，只保留一份存档；刷新后点「继续上局」。清理网站数据会丢失存档。</p>
       <p><a className="text-button" href=${/\/game\/jianghu-slay\/(?:index\.html)?$/.test(window.location.pathname) ? "../jianghu-slay.html" : "https://wq-win.github.io/game/jianghu-slay.html"}>游戏介绍与存档说明 →</a></p>
-      <button type="button" className="btn primary" autoFocus onClick=${() => setHelpOpen(false)}>知道了</button>
+      <button type="button" className="btn primary" data-menu-dismiss onClick=${() => setHelpOpen(false)}>知道了</button>
     </div>
   </div>` : null;
 
